@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
 import router from './router'
-import AuthService from './AuthService'
+import authModule from './modules/AuthModule'
 
 Vue.use(Vuex)
 
@@ -16,12 +16,15 @@ let api = Axios.create({
 
 
 // let query = new random ([chicken, beef, dfasf, fsdfaf])
-const _foodapi = axios.create({
-  baseUrl: 'https://api.edamam.com/search?q=chicken&app_id=$e5152851app_key=$b5e235b115bbed4de5e65e86ac731f4a'
+const _foodapi = Axios.create({
+  baseURL: 'https://api.edamam.com/search?q=chicken&app_id=$e5152851app_key=$b5e235b115bbed4de5e65e86ac731f4a'
 })
 
 // const server = baseUrl: localhost 
 export default new Vuex.Store({
+  modules: {
+    authModule
+  },
   state: {
     user: {}
   },
@@ -33,42 +36,7 @@ export default new Vuex.Store({
       state.user = {}
     }
 
-
-
-
-  },
-  actions: {
-    //#region -- AUTH STUFF --
-    async register({ commit, dispatch }, creds) {
-      try {
-        let user = await AuthService.Register(creds)
-        commit('setUser', user)
-        router.push({ name: "home" })
-      } catch (e) {
-        console.warn(e.message)
-      }
-    },
-    async login({ commit, dispatch }, creds) {
-      try {
-        let user = await AuthService.Login(creds)
-        commit('setUser', user)
-        router.push({ name: "home" })
-      } catch (e) {
-        console.warn(e.message)
-      }
-    },
-    async logout({ commit, dispatch }) {
-      try {
-
-        let success = await AuthService.Logout()
-        if (!success) { }
-        commit('resetState')
-        router.push({ name: "login" })
-      } catch (e) {
-        console.warn(e.message)
-      }
-    },
-    //#endregion
-
   }
+
+
 })
