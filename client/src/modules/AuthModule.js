@@ -19,7 +19,7 @@ export default {
         commit('setUser', user)
         router.push({ name: "home" })
       } catch (e) {
-        console.warn(e.message)
+        alert("invalid login")
       }
     },
     async logout({ commit, dispatch }) {
