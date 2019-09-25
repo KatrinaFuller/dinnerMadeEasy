@@ -27,7 +27,8 @@ export default new Vuex.Store({
   },
 
   state: {
-    user: {}
+    user: {},
+    recipes: []
   },
   mutations: {
     setUser(state, user) {
@@ -61,7 +62,16 @@ export default new Vuex.Store({
       router.push({ name: "home" })
     },
     usernameButton() {
-      router.push({name: "profile"})
+      router.push({ name: "profile" })
+    },
+
+    async addRecipe({ dispatch }, data) {
+      try {
+        let res = await api.post('/recipe', data)
+        dispatch('getFavorites', data.userId) //might need to change this name
+      } catch (e) {
+        console.warn(e.message)
+      }
     }
   }
 
