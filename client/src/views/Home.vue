@@ -3,7 +3,7 @@
     <!-- navbar -->
     <navbar />
     <!-- header -->
-    <header />
+    <homeHeader />
     <!-- carousel -->
     <carousel />
     <!-- 2 dropdowns -->
@@ -19,7 +19,7 @@
 // @ is an alias to /src
 import navbar from "../components/navbar";
 import carousel from "../components/carousel";
-import header from "../components/header";
+import homeHeader from "../components/homeHeader";
 import dropdowns from "../components/dropdowns";
 import randomRecipeButton from "../components/randomRecipeButton";
 import randomRecipe from "../components/randomRecipe";
@@ -29,7 +29,7 @@ export default {
   components: {
     carousel,
     navbar,
-    header,
+    homeHeader,
     dropdowns,
     randomRecipeButton,
     randomRecipe
