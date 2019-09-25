@@ -1,10 +1,15 @@
 <template>
   <div class="navbar1">
-    <nav class="navbar navbar-light bg-dark">
+    <nav class="navbar navbar-light bg-light">
       <form class="form-inline">
-        <button class="btn btn-outline-primary" type="button" @click="loginNav">Login</button>
-        <button class="btn btn-outline-primary" type="button" @click="logoutNav">Logout</button>
-        <!-- <button class="btn btn-outline-primary" type="button">{{user.name}}</button> -->
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          @click="logoutNav"
+          v-if="user.email"
+        >Logout</button>
+        <button class="btn btn-outline-primary" type="button" @click="loginNav" v-else>Login</button>
+        <button class="btn btn-outline-primary" type="button" v-if="user.email">Hello, {{user.name}}</button>
       </form>
     </nav>
   </div>
@@ -19,8 +24,7 @@ export default {
   },
   computed: {
     user() {
-      debugger;
-      return this.$store.user;
+      return this.$store.state.user;
     }
   },
   methods: {
@@ -38,6 +42,9 @@ export default {
 
 <style scoped>
 .navbar1 {
+  display: contents;
+}
+.form-inline {
   display: contents;
 }
 </style>
