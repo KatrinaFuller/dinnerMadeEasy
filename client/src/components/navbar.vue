@@ -18,7 +18,14 @@ export default {
     return {};
   },
   computed: {},
-  methods: {},
+  methods: {
+    loginNav() {
+      this.$store.dispatch("loginNav");
+    },
+    logoutNav() {
+      this.$store.dispatch("logoutNav");
+    }
+  },
   components: {}
 };
 </script>
