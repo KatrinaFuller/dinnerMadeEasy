@@ -36,6 +36,22 @@ export default new Vuex.Store({
       state.user = {}
     }
 
+  },
+  actions: {
+    async loginNav() {
+      try {
+        router.push({ name: "login" })
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async logoutNav() {
+      try {
+
+      } catch (error) {
+        console.error(error)
+      }
+    }
   }
 
 
