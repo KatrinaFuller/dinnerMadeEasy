@@ -21,17 +21,6 @@ export default {
       } catch (e) {
         alert("invalid login")
       }
-    },
-    async logout({ commit, dispatch }) {
-      try {
-
-        let success = await AuthService.Logout()
-        if (!success) { }
-        commit('resetState')
-        router.push({ name: "login" })
-      } catch (e) {
-        console.warn(e.message)
-      }
-    },
+    }
   }
 }

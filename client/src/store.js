@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 import router from './router'
 import AuthModule from './modules/AuthModule'
+import AuthService from "./AuthService"
 
 
 Vue.use(Vuex)
@@ -45,11 +46,15 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async logoutNav() {
+
+    async logoutNav({ commit, dispatch }) {
       try {
 
-      } catch (error) {
-        console.error(error)
+        let success = await AuthService.Logout()
+        if (!success) { }
+        commit('resetState')
+      } catch (e) {
+        console.warn(e.message)
       }
     }
   }

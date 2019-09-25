@@ -27,5 +27,9 @@ export default new Router({
         return import(/* webpackChunkName: "about" */ './views/About.vue')
       }
     },
+    {
+      path: "*",
+      redirect: "/"
+    },
   ]
 })
