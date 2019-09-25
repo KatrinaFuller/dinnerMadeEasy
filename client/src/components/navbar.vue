@@ -9,7 +9,7 @@
           v-if="user.email"
         >Logout</button>
         <button class="btn btn-outline-primary" type="button" @click="loginNav" v-else>Login</button>
-        <button class="btn btn-outline-primary" type="button" v-if="user.email">Hello, {{user.name}}</button>
+        <button class="btn btn-outline-primary" type="button" @click="usernameButton" v-if="user.email">Hello, {{user.name}}</button>
       </form>
     </nav>
   </div>
@@ -33,6 +33,9 @@ export default {
     },
     logoutNav() {
       this.$store.dispatch("logoutNav");
+    },
+    usernameButton(){
+      this.$store.dispatch("usernameButton")
     }
   },
   components: {}

@@ -49,7 +49,6 @@ export default new Vuex.Store({
 
     async logoutNav({ commit, dispatch }) {
       try {
-
         let success = await AuthService.Logout()
         if (!success) { }
         commit('resetState')
