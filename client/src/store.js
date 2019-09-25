@@ -13,6 +13,33 @@ export default new Vuex.Store({
 
   },
   mutations: {
+<<<<<<< HEAD
+=======
+    setUser(state, user) {
+      state.user = user
+    },
+    resetState(state, user) {
+      state.user = {}
+    }
+
+  },
+  actions: {
+    async loginNav() {
+      try {
+        router.push({ name: "login" })
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async logoutNav() {
+      try {
+
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  }
+>>>>>>> 0247f363988093a7191370c51b2bfa0aaa7230bd
 
   },
   actions: {

@@ -1,18 +1,40 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <!-- navbar -->
+    <navbar />
+    <!-- header -->
+    <homeHeader />
+    <!-- carousel -->
+    <carousel />
+    <!-- 2 dropdowns -->
+    <dropdowns />
+    <!-- random recipe button -->
+    <randomRecipeButton />
+    <!-- random recipe generated -->
+    <randomRecipe />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import navbar from "../components/navbar";
+import carousel from "../components/carousel";
+import homeHeader from "../components/homeHeader";
+import dropdowns from "../components/dropdowns";
+import randomRecipeButton from "../components/randomRecipeButton";
+import randomRecipe from "../components/randomRecipe";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
-    HelloWorld
+    carousel,
+    navbar,
+    homeHeader,
+    dropdowns,
+    randomRecipeButton,
+    randomRecipe
   }
-}
+};
 </script>
+<style scoped>
+</style>
