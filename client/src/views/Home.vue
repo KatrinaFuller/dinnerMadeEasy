@@ -82,6 +82,18 @@
       </div>
     </div>
     <h4>Advances one slide at a time</h4>
+  <div class="home">
+    <!-- navbar -->
+
+    <!-- header -->
+
+    <!-- carousel -->
+
+    <!-- 2 dropdowns -->
+
+    <!-- random recipe button -->
+
+    <!-- random recipe generated -->
   </div>
 </template>
 
