@@ -2,8 +2,8 @@
   <div class="profileNavBar">
     <nav class="navbar navbar-light bg-light">
       <form class="form-inline">
-        <button class="btn btn-outline-success" type="button" @click="backButton">Back</button>
-        <button class="btn btn-sm btn-outline-secondary" type="button" @click="logout">Logout</button>
+        <button class="btn btn-outline-primary" type="button" @click="backButton">Back</button>
+        <button class="btn btn-outline-primary" type="button" @click="logout">Logout</button>
       </form>
     </nav>
   </div>
@@ -11,6 +11,7 @@
 
 
 <script>
+import router from "@/router.js";
 export default {
   name: "profileNavBar",
   data() {
@@ -18,11 +19,12 @@ export default {
   },
   computed: {},
   methods: {
-    backButton() {
-      this.$;
-    },
     logout() {
-      this.$store.dispatch("logout");
+      this.$store.dispatch("logoutNav");
+    },
+
+    backButton() {
+      this.$store.dispatch("backButton");
     }
   },
   components: {}
@@ -31,4 +33,10 @@ export default {
 
 
 <style scoped>
+.profileNavBar {
+  display: contents;
+}
+.form-inline {
+  display: contents;
+}
 </style>

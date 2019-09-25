@@ -52,9 +52,13 @@ export default new Vuex.Store({
         let success = await AuthService.Logout()
         if (!success) { }
         commit('resetState')
+        router.push({ name: "home" })
       } catch (e) {
         console.warn(e.message)
       }
+    },
+    backButton() {
+      router.push({ name: "home" })
     }
   }
 

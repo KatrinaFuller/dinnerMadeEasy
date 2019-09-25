@@ -1,9 +1,13 @@
 <template>
-  <div class="profile"></div>
+  <div class="profile">
+    <profileNavBar />
+  </div>
 </template>
 
 
 <script>
+import profileNavBar from "../components/profileNavBar";
+
 export default {
   name: "profile",
   data() {
@@ -11,7 +15,7 @@ export default {
   },
   computed: {},
   methods: {},
-  components: {}
+  components: { profileNavBar }
 };
 </script>
 
