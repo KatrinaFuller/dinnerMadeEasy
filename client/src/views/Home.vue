@@ -84,7 +84,13 @@
     <h4>Advances one slide at a time</h4>
   <div class="home">
     <!-- navbar -->
-
+    <nav class="navbar navbar-light bg-light">
+      <form class="form-inline">
+        <button class="btn btn-outline-primary" type="button" @click="loginNav">Login</button>
+        <button class="btn btn-outline-primary" type="button" @click="logoutNav">Logout</button>
+        <!-- <button class="btn btn-outline-primary" type="button">{{user.name}}</button> -->
+      </form>
+    </nav>
     <!-- header -->
 
     <!-- carousel -->
@@ -102,7 +108,21 @@
 
 export default {
   name: "home",
+<<<<<<< HEAD
   components: {}
+=======
+  components: {
+    HelloWorld
+  },
+  methods: {
+    loginNav() {
+      this.$store.dispatch("loginNav");
+    },
+    logoutNav() {
+      this.$store.dispatch("logoutNav");
+    }
+  }
+>>>>>>> f4fbec7355be6e1a55cdc259ddda63743c41f7bb
 };
 </script>
 <style scoped>
