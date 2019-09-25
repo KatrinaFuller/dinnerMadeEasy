@@ -77,7 +77,9 @@ export default new Vuex.Store({
     async generate() {
       try {
         let res = await api.get('/recipe')
-      } catch (error) {}
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
 
