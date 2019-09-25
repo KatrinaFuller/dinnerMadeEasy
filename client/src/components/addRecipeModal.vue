@@ -53,15 +53,33 @@
             </div>
             <h6>Tag Your Recipe</h6>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value id="breakfast" />
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Breakfast"
+                id="breakfast"
+                v-model="newRecipe.tags"
+              />
               <label class="form-check-label" for="breakfast">Breakfast</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value id="lunch" />
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Lunch"
+                id="lunch"
+                v-model="newRecipe.tags"
+              />
               <label class="form-check-label" for="lunch">Lunch</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value id="dinner" />
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Dinner"
+                id="dinner"
+                v-model="newRecipe.tags"
+              />
               <label class="form-check-label" for="dinner">Dinner</label>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -78,7 +96,9 @@ export default {
   name: "add-recipe-modal",
   data() {
     return {
-      newRecipe: {}
+      newRecipe: {
+        tags: []
+      }
     };
   },
   computed: {},
