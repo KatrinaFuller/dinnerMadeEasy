@@ -59,6 +59,9 @@ export default new Vuex.Store({
     },
     backButton() {
       router.push({ name: "home" })
+    },
+    usernameButton() {
+      router.push({name: "profile"})
     }
   }
 
