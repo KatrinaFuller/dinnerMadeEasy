@@ -1,8 +1,10 @@
 <template>
 <div class="pt-5">
 <div>
-<select v-model="mainIngredient">
-  <option disabled value="">Main Ingredient</option>
+<h6>Main Ingredient</h6>
+<select class="dropdown" v-model="mainIngredient">
+  <option disabled value=""></option>
+  <option value="">random</option>
   <option>chicken</option>
   <option>beef</option>
   <option>pork</option>
@@ -11,9 +13,11 @@
   <option>fish</option>
 </select>
 </div>
-<div class="pt-2">
-<select v-model="dietaryRequirement" @change="onChange(index)">
-  <option disabled value="">Dietary Requirement</option>
+<div class="pt-4">
+<h6>Dietary Requirement</h6>
+<select class="dropdown" v-model="dietaryRequirement">
+  <option disabled value=""></option>
+  <option value="">random</option>
   <option>low-carb</option>
   <option>low-fat</option>
   <option>high-protein</option>
@@ -45,4 +49,7 @@ export default {
 
 
 <style scoped>
+.dropdown{
+  width: 20vw
+}
 </style>
