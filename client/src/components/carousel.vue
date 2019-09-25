@@ -70,6 +70,7 @@
 
         <div class="carousel-item h100 caro-item-2">-->
         <!-- <div class="col-4"> -->
+
         <img
           class="mx-2"
           src="https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg"

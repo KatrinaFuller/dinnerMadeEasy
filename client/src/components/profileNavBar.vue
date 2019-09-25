@@ -18,7 +18,9 @@ export default {
   },
   computed: {},
   methods: {
-    backButton() {},
+    backButton() {
+      this.$;
+    },
     logout() {
       this.$store.dispatch("logout");
     }
