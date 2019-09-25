@@ -19,7 +19,7 @@ const _model = new Schema({
     label: { type: String, required: true },
     image: { type: String },
     source: { type: String },
-    url: { type: String, required: true },
+    url: { type: String },
     dietLabels: [{ type: String }],
     healthLabels: [{ type: String }],
     ingredientLines: [{ type: String }],
