@@ -1,6 +1,6 @@
 <template>
-  <div class="navbar">
-    <nav class="navbar navbar-light bg-light">
+  <div class="navbar1">
+    <nav class="navbar navbar-light bg-dark">
       <form class="form-inline">
         <button class="btn btn-outline-primary" type="button" @click="loginNav">Login</button>
         <button class="btn btn-outline-primary" type="button" @click="logoutNav">Logout</button>
@@ -17,7 +17,12 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    user() {
+      debugger;
+      return this.$store.user;
+    }
+  },
   methods: {
     loginNav() {
       this.$store.dispatch("loginNav");
@@ -32,4 +37,7 @@ export default {
 
 
 <style scoped>
+.navbar1 {
+  display: contents;
+}
 </style>
