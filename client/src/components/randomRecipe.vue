@@ -1,5 +1,7 @@
 <template>
-  <div class="randomRecipe"></div>
+  <div class="randomRecipe">
+    
+  </div>
 </template>
 
 

@@ -4,6 +4,7 @@ import Axios from 'axios'
 import router from './router'
 import AuthModule from './modules/AuthModule'
 import AuthService from "./AuthService"
+import { generateKeyPair } from 'crypto';
 
 
 Vue.use(Vuex)
@@ -36,8 +37,7 @@ export default new Vuex.Store({
     },
     resetState(state, user) {
       state.user = {}
-    }
-
+    },
   },
   actions: {
     async loginNav() {
@@ -72,6 +72,12 @@ export default new Vuex.Store({
       } catch (e) {
         console.warn(e.message)
       }
+    },
+
+    async generate() {
+      try {
+        let res = await api.get('/recipe')
+      } catch (error) {}
     }
   }
 

@@ -1,5 +1,7 @@
 <template>
-  <div class="randomRecipeButton"></div>
+  <div class="randomRecipeButton pt-4">
+    <button type="button" class="btn btn-primary btn-lg" @click="generate(data)">Generate Recipe</button>
+  </div>
 </template>
 
 
@@ -10,7 +12,12 @@ export default {
     return {};
   },
   computed: {},
-  methods: {},
+  methods: {
+    generate(){
+      debugger
+      return this.$store.state.recipes
+    }
+  },
   components: {}
 };
 </script>
