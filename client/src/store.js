@@ -13,8 +13,6 @@ export default new Vuex.Store({
 
   },
   mutations: {
-<<<<<<< HEAD
-=======
     setUser(state, user) {
       state.user = user
     },
@@ -39,10 +37,6 @@ export default new Vuex.Store({
       }
     }
   }
->>>>>>> 0247f363988093a7191370c51b2bfa0aaa7230bd
 
-  },
-  actions: {
 
-  }
 })
