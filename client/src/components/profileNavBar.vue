@@ -11,6 +11,7 @@
 
 
 <script>
+import router from "@/router.js";
 export default {
   name: "profileNavBar",
   data() {
@@ -18,11 +19,12 @@ export default {
   },
   computed: {},
   methods: {
-    backButton() {
-      this.$;
-    },
     logout() {
-      this.$store.dispatch("logout");
+      this.$store.dispatch("logoutNav");
+    },
+
+    backButton() {
+      this.$store.dispatch("backButton");
     }
   },
   components: {}

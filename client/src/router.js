@@ -28,6 +28,14 @@ export default new Router({
       }
     },
     {
+      path: '/profile',
+      name: 'profile',
+      component: function () {
+        return import(/* webpackChunkName: "profile" */ './views/Profile.vue')
+      }
+    },
+
+    {
       path: "*",
       redirect: "/"
     },

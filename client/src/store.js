@@ -49,13 +49,16 @@ export default new Vuex.Store({
 
     async logoutNav({ commit, dispatch }) {
       try {
-
         let success = await AuthService.Logout()
         if (!success) { }
         commit('resetState')
+        router.push({ name: "home" })
       } catch (e) {
         console.warn(e.message)
       }
+    },
+    backButton() {
+      router.push({ name: "home" })
     }
   }
 
