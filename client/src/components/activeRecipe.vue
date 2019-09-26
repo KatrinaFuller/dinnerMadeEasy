@@ -1,6 +1,8 @@
 <template>
   <div class="activeRecipe">
-    
+    <!-- <h1>{{recipes.label}}</h1>
+    <img :src="recipes.image" />
+    <p>{{recipes.ingredientLines}}</p>-->
   </div>
 </template>
 
@@ -11,7 +13,11 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    // getRecipe(name) {
+    //   return this.$store.state.recipes;
+    // }
+  },
   methods: {},
   components: {}
 };
