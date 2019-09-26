@@ -13,10 +13,8 @@ export default class RecipeController {
             .use(Authorize.authenticated)
             .post('', this.create)
             .post('/:id/notes', this.createNotes)
-            .post('/:id/tags', this.createTags)
             .put('/:id', this.edit)
             .put('/:id/notes', this.deleteNotes)
-            .put('/:id/tags', this.deleteTags)
             .delete('/:id', this.delete)
     }
 
@@ -41,14 +39,14 @@ export default class RecipeController {
     async create(req, res, next) {
         try {
             //NOTE the user id is accessable through req.body.uid, never trust the client to provide you this information
-            req.body.authorId = req.session.uid
+            req.body.userId = req.session.uid
             let data = await _recipeService.create(req.body)
             res.send(data)
         } catch (error) { next(error) }
     }
 
     async createNotes(req, res, next) {
-        req.body.authorId = req.session.uid
+        req.body.userId = req.session.uid
         try {
             let comment = await _recipeService.findOneAndUpdate({ _id: req.params.id, authorId: req.session.uid }, { $push: { comments: req.body } }, { new: true })
             res.send(comment)
@@ -57,15 +55,6 @@ export default class RecipeController {
         }
     }
 
-    async createTags(req, res, next) {
-        req.body.authorId = req.session.uid
-        try {
-            let comment = await _recipeService.findOneAndUpdate({ _id: req.params.id, authorId: req.session.uid }, { $push: { comments: req.body } }, { new: true })
-            res.send(comment)
-        } catch (error) {
-            next(error)
-        }
-    }
 
     async edit(req, res, next) {
         try {
@@ -88,15 +77,6 @@ export default class RecipeController {
     }
 
     async deleteNotes(req, res, next) {
-        try {
-            let comment = await _recipeService.findOneAndUpdate({ _id: req.params.id, authorId: req.session.uid }, { $pull: { comments: req.body } }, { new: true })
-            res.send(comment)
-        } catch (error) {
-            next(error)
-        }
-    }
-
-    async deleteTags(req, res, next) {
         try {
             let comment = await _recipeService.findOneAndUpdate({ _id: req.params.id, authorId: req.session.uid }, { $pull: { comments: req.body } }, { new: true })
             res.send(comment)

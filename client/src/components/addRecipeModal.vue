@@ -105,8 +105,8 @@ export default {
   methods: {
     addRecipe() {
       this.newRecipe.type = "favorites";
+      debugger;
       this.$store.dispatch("addRecipe", this.newRecipe);
-      this.newRecipe = {};
       $(".close").click();
     }
   },
