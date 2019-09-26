@@ -48,7 +48,8 @@ export default class RecipeController {
         try {
             let q = req.query.q
             let to = req.query.to
-            let data = await _foodapi.get(apiKey + '&q=' + q + '&to=' + to)
+            let url = apiKey + '&q=' + q + '&to=' + to
+            let data = await _foodapi.get(url)
             res.send(data.data.hits)
         } catch (error) {
             next(error)
