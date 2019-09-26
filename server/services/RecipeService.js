@@ -20,7 +20,7 @@ const _model = new Schema({
     healthLabels: [{ type: String }],
     ingredientLines: [{ type: String }],
     type: { type: String, enum: ['favorites', 'toTry'] },
-    tags: { type: String },
+    tags: [{ type: String }],
     userId: { type: ObjectId, ref: "User", required: true },
     notes: [_notesSchema],
 })
