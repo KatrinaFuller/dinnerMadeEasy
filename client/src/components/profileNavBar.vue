@@ -3,6 +3,7 @@
     <nav class="navbar navbar-light bg-light">
       <form class="form-inline">
         <button class="btn btn-outline-primary" type="button" @click="backButton">Back</button>
+        <h3>{{user.name}}-Dashboard</h3>
         <button class="btn btn-outline-primary" type="button" @click="logout">Logout</button>
       </form>
     </nav>
@@ -17,7 +18,11 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
+  },
   methods: {
     logout() {
       this.$store.dispatch("logoutNav");
