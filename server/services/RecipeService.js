@@ -21,6 +21,7 @@ const _model = new Schema({
     ingredientLines: [{ type: String }],
     type: { type: String, enum: ['favorites', 'toTry'] },
     tags: [{ type: String }],
+    ratings: { type: Number },
     userId: { type: ObjectId, ref: "User", required: true },
     notes: [_notesSchema],
 })
