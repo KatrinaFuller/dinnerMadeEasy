@@ -1,5 +1,5 @@
 <template>
-  <div class="activeRecipe">
+  <div class="randomRecipe">
     <!-- <h1>{{recipes.label}}</h1>
     <img :src="recipes.image" />
     <p>{{recipes.ingredientLines}}</p>-->
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "activeRecipe",
+  name: "randomRecipe",
   data() {
     return {};
   },
