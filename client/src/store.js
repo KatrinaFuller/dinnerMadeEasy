@@ -31,7 +31,9 @@ export default new Vuex.Store({
   state: {
     user: {},
     recipes: [],
-    randomRecipes: []
+    randomRecipes: [],
+    favoriteRecipes: [],
+    toTryRecipes: []
   },
   mutations: {
     setUser(state, user) {
@@ -46,6 +48,10 @@ export default new Vuex.Store({
     },
     setRandomRecipes(state, recipes) {
       state.randomRecipes = recipes
+    },
+
+    setFavRecipes(state, recipes) {
+      state.favoriteRecipes = recipes
     }
   },
   actions: {
@@ -77,6 +83,7 @@ export default new Vuex.Store({
     async addRecipe({ dispatch }, data) {
       try {
         let res = await api.post('/recipe', data)
+        debugger
         dispatch('getFavorites', data.userId) //might need to change this name
       } catch (e) {
         console.warn(e.message)
@@ -100,8 +107,16 @@ export default new Vuex.Store({
 
     //   }
     // }
+    async getFavorites({ commit, dispatch }, data) {
+      try {
+        let res = await api.get(`/recipes/${data._id}`)
+        commit('setFavRecipes', res.data)
 
+      } catch (error) {
+        console.error(error)
 
+      }
+    }
   }
 
 
