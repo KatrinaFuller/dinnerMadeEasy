@@ -37,6 +37,10 @@ export default new Vuex.Store({
     resetState(state, user) {
       state.user = {}
     },
+
+    setRecipe(state, user) {
+      state.recipes = []
+    }
   },
   actions: {
     async loginNav() {
@@ -73,13 +77,25 @@ export default new Vuex.Store({
       }
     },
 
-    async generate() {
+    async generate({ commit, dispatch }, data) {
       try {
-        let res = await api.get('/recipe')
+        // debugger
+        let res = await api.get(`/recipe/${data}`)
+        dispatch("setRecipe", data)
       } catch (error) {
         console.error(error)
       }
-    }
+    },
+
+    // async getRecipe(name) {
+    //   try {
+    //     let res = await api.get()
+    //   } catch (error) {
+
+    //   }
+    // }
+
+
   }
 
 

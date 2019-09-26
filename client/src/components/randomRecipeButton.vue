@@ -1,6 +1,6 @@
 <template>
   <div class="randomRecipeButton pt-4">
-    <button type="button" class="btn btn-primary btn-lg" @click="generate(data)">Generate Recipe</button>
+    <button type="button" class="btn btn-primary btn-lg" @click="generate(_id)">Generate Recipe</button>
   </div>
 </template>
 
@@ -11,11 +11,14 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    this.$store.dispatch("");
+  },
   computed: {},
   methods: {
-    generate(){
-      debugger
-      return this.$store.state.recipes
+    generate(_id) {
+      debugger;
+      return this.$store.state.recipes;
     }
   },
   components: {}
