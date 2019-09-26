@@ -1,14 +1,22 @@
 import express from 'express'
 import RecipeService from '../services/RecipeService';
 import { Authorize } from '../middleware/authorize.js'
+import Axios from "axios"
 
 let _recipeService = new RecipeService().repository
+
+const _foodapi = Axios.create({
+    baseURL: 'https://api.edamam.com/'
+})
+
+let apiKey = 'search?app_id=$e5152851app_key=$b5e235b115bbed4de5e65e86ac731f4a'
 
 export default class RecipeController {
     constructor() {
         this.router = express.Router()
             //NOTE all routes after the authenticate method will require the user to be logged in to access
             .get('', this.getAll)
+            .get('/random', this.getRandomRecipes)
             .get('/:id', this.getById)
             .use(Authorize.authenticated)
             .post('', this.create)
@@ -36,6 +44,17 @@ export default class RecipeController {
             }
             res.send(data)
         } catch (error) { next(error) }
+    }
+
+    async getRandomRecipes(req, res, next) {
+        try {
+            let q = req.query.q
+            let to = req.query.to
+            let data = await _foodapi.get(apiKey + '&q=' + q + '&to=' + to)
+            res.send(data.data.hits)
+        } catch (error) {
+            next(error)
+        }
     }
 
     async create(req, res, next) {

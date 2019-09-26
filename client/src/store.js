@@ -8,9 +8,11 @@ import AuthService from "./AuthService"
 
 Vue.use(Vuex)
 // let query = new random ([chicken, beef,]) this will be for randomly generating our query in the baseUrl
-const _foodapi = Axios.create({
-  baseURL: 'https://api.edamam.com/search?q=chicken&app_id=$e5152851app_key=$b5e235b115bbed4de5e65e86ac731f4a'
-})
+// const _foodapi = Axios.create({
+//   baseURL: 'https://api.edamam.com/'
+// })
+
+// let apiKey = 'search?app_id=$e5152851app_key=$b5e235b115bbed4de5e65e86ac731f4a'
 
 let base = window.location.host.includes('localhost:8080') ? '//localhost:3000/' : '/'
 
@@ -28,7 +30,8 @@ export default new Vuex.Store({
 
   state: {
     user: {},
-    recipes: []
+    recipes: [],
+    randomRecipes: []
   },
   mutations: {
     setUser(state, user) {
@@ -40,6 +43,9 @@ export default new Vuex.Store({
 
     setRecipe(state, user) {
       state.recipes = []
+    },
+    setRandomRecipe(state, recipes) {
+      state.randomRecipes = recipes
     }
   },
   actions: {
@@ -79,9 +85,12 @@ export default new Vuex.Store({
 
     async generate({ commit, dispatch }, data) {
       try {
-        // debugger
-        let res = await api.get(`/recipe/${data}`)
-        dispatch("setRecipe", data)
+        if (!data) {
+          data = {}
+        }
+        let options = randomizeQueryAndGetMaxCount(data.query)
+        let res = await api.get('/recipe/random' + `?q=${options.query}&to=${options.maxTo}`)
+        commit("setRecipes", res.data.hits)
       } catch (error) {
         console.error(error)
       }
@@ -100,3 +109,18 @@ export default new Vuex.Store({
 
 
 })
+
+
+let options = {
+  beef: 69809,
+  chicken: 170158
+}
+
+function randomizeQueryAndGetMaxCount(query) {
+  if (!query) {
+    let keys = Object.keys(options)
+    query = keys[Math.floor(Math.random() * keys.length)]
+  }
+  let maxTo = Math.floor(Math.random() * options[query]) + 11
+  return { query, maxTo }
+}
