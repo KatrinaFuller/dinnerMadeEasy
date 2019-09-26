@@ -8,10 +8,6 @@ let _notesSchema = new Schema({
     userId: { type: ObjectId, ref: 'User', required: true }
 })
 
-let _tagsSchema = new Schema({
-    tags: { type: String },
-    userId: { type: ObjectId, ref: 'User', required: true }
-})
 
 
 const _model = new Schema({
@@ -24,9 +20,9 @@ const _model = new Schema({
     healthLabels: [{ type: String }],
     ingredientLines: [{ type: String }],
     type: { type: String, enum: ['favorites', 'toTry'] },
+    tags: { type: String },
     userId: { type: ObjectId, ref: "User", required: true },
     notes: [_notesSchema],
-    tags: [_tagsSchema]
 })
 
 export default class RecipeService {

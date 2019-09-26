@@ -16,7 +16,11 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
+  },
   methods: {},
   components: { profileNavBar, addRecipeModal }
 };
