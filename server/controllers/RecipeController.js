@@ -113,7 +113,7 @@ let options = {
 }
 
 function randomizeQueryAndGetMaxCount(query) {
-    if (!query) {
+    if (!query || query == "random") {
         let keys = Object.keys(options)
         query = keys[Math.floor(Math.random() * keys.length)]
     }

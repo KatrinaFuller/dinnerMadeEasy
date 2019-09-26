@@ -12,12 +12,11 @@ export default {
     return {};
   },
   mounted() {
-    this.$store.dispatch("generate");
+    this.$store.dispatch("generate", {});
   },
   computed: {},
   methods: {
     generate() {
-      debugger;
       return this.$store.state.recipes;
     }
   },
