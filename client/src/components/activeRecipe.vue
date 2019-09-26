@@ -1,5 +1,5 @@
 <template>
-  <div class="randomRecipe">
+  <div class="activeRecipe">
     
   </div>
 </template>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "randomRecipe",
+  name: "activeRecipe",
   data() {
     return {};
   },

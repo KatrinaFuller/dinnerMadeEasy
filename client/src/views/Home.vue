@@ -11,7 +11,7 @@
     <!-- random recipe button -->
     <randomRecipeButton />
     <!-- random recipe generated -->
-    <randomRecipe />
+    <activeRecipe />
   </div>
 </template>
 
@@ -22,7 +22,7 @@ import carousel from "../components/carousel";
 import homeHeader from "../components/homeHeader";
 import dropdowns from "../components/dropdowns";
 import randomRecipeButton from "../components/randomRecipeButton";
-import randomRecipe from "../components/randomRecipe";
+import activeRecipe from "../components/activeRecipe";
 
 export default {
   name: "home",
