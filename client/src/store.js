@@ -43,8 +43,8 @@ export default new Vuex.Store({
       state.user = {}
     },
 
-    setRecipes(state, user) {
-      state.recipes = []
+    setRecipes(state, recipes) {
+      state.recipes = recipes
     },
     setRandomRecipes(state, recipes) {
       state.randomRecipes = recipes
