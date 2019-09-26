@@ -83,7 +83,6 @@ export default new Vuex.Store({
     async addRecipe({ dispatch }, data) {
       try {
         let res = await api.post('/recipe', data)
-        debugger
         dispatch('getFavorites', data.userId) //might need to change this name
       } catch (e) {
         console.warn(e.message)
@@ -94,7 +93,6 @@ export default new Vuex.Store({
       let recipes = JSON.parse(localStorage.getItem("recipes")) //checking for recipes in local storage
       try {
         if (!recipes) {
-          debugger
           let res = await api.get('/recipe/random' + `?q=${data.query}`)
           commit("setRandomRecipes", res.data)
           localStorage.setItem("recipes", JSON.stringify(res.data)) //sets them in local storage

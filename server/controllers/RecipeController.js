@@ -19,6 +19,7 @@ export default class RecipeController {
             .get('/random', this.getRandomRecipes)
             .get('/:id', this.getById)
             .use(Authorize.authenticated)
+            .get('/myRecipes', this.getAllByUser)
             .post('', this.create)
             .post('/:id/notes', this.createNotes)
             .put('/:id', this.edit)
@@ -55,6 +56,17 @@ export default class RecipeController {
         }
     }
 
+    async getAllByUser(req, res, next) {
+        try {
+            let data = await _recipeService.find({ userId: req.session.uid })
+            if (!data) {
+                throw new Error("Invalid User Id")
+            }
+            return res.send(data)
+        } catch (error) { next(error) }
+
+    }
+
     async create(req, res, next) {
         try {
             //NOTE the user id is accessable through req.body.uid, never trust the client to provide you this information
@@ -67,7 +79,7 @@ export default class RecipeController {
     async createNotes(req, res, next) {
         req.body.userId = req.session.uid
         try {
-            let comment = await _recipeService.findOneAndUpdate({ _id: req.params.id, authorId: req.session.uid }, { $push: { comments: req.body } }, { new: true })
+            let comment = await _recipeService.findOneAndUpdate({ _id: req.params.id, userId: req.session.uid }, { $push: { comments: req.body } }, { new: true })
             res.send(comment)
         } catch (error) {
             next(error)
@@ -97,7 +109,7 @@ export default class RecipeController {
 
     async deleteNotes(req, res, next) {
         try {
-            let comment = await _recipeService.findOneAndUpdate({ _id: req.params.id, authorId: req.session.uid }, { $pull: { comments: req.body } }, { new: true })
+            let comment = await _recipeService.findOneAndUpdate({ _id: req.params.id, userId: req.session.uid }, { $pull: { comments: req.body } }, { new: true })
             res.send(comment)
         } catch (error) {
             next(error)

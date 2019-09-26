@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     recipe() {
-      return this.$store.state.recipes[(this.recipe.type = "favorites")];
+      return this.$store.state.favoriteRecipes;
     }
   },
   methods: {},
