@@ -4,7 +4,7 @@
       <h6>Main Ingredient</h6>
       <select class="dropdown" v-model="mainIngredient">
         <option disabled value></option>
-        <option value>random</option>
+        <option>random</option>
         <option>chicken</option>
         <option>beef</option>
         <option>pork</option>
@@ -17,7 +17,7 @@
       <h6>Dietary Requirement</h6>
       <select class="dropdown" v-model="dietaryRequirement">
         <option disabled value></option>
-        <option value="random">random</option>
+        <option>random</option>
         <option>low-carb</option>
         <option>low-fat</option>
         <option>high-protein</option>
