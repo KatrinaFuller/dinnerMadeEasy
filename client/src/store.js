@@ -4,7 +4,6 @@ import Axios from 'axios'
 import router from './router'
 import AuthModule from './modules/AuthModule'
 import AuthService from "./AuthService"
-import { generateKeyPair } from 'crypto';
 
 
 Vue.use(Vuex)
