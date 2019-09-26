@@ -22,7 +22,7 @@ import carousel from "../components/carousel";
 import homeHeader from "../components/homeHeader";
 import dropdowns from "../components/dropdowns";
 import randomRecipeButton from "../components/randomRecipeButton";
-import randomRecipe from "../components/activeRecipe";
+import randomRecipe from "../components/randomRecipe";
 
 export default {
   name: "home",
