@@ -41,10 +41,10 @@ export default new Vuex.Store({
       state.user = {}
     },
 
-    setRecipe(state, user) {
+    setRecipes(state, user) {
       state.recipes = []
     },
-    setRandomRecipe(state, recipes) {
+    setRandomRecipes(state, recipes) {
       state.randomRecipes = recipes
     }
   },
@@ -85,12 +85,9 @@ export default new Vuex.Store({
 
     async generate({ commit, dispatch }, data) {
       try {
-        if (!data) {
-          data = {}
-        }
-        let options = randomizeQueryAndGetMaxCount(data.query)
-        let res = await api.get('/recipe/random' + `?q=${options.query}&to=${options.maxTo}`)
-        commit("setRecipes", res.data.hits)
+
+        let res = await api.get('/recipe/random' + `?q=${data.query}`)
+        commit("setRandomRecipes", res.data.hits)
       } catch (error) {
         console.error(error)
       }
@@ -111,16 +108,3 @@ export default new Vuex.Store({
 })
 
 
-let options = {
-  beef: 69809,
-  chicken: 170158
-}
-
-function randomizeQueryAndGetMaxCount(query) {
-  if (!query) {
-    let keys = Object.keys(options)
-    query = keys[Math.floor(Math.random() * keys.length)]
-  }
-  let maxTo = Math.floor(Math.random() * options[query]) + 11
-  return { query, maxTo }
-}
