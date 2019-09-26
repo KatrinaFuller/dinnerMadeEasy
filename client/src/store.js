@@ -43,8 +43,8 @@ export default new Vuex.Store({
       state.user = {}
     },
 
-    setRecipes(state, user) {
-      state.recipes = []
+    setRecipes(state, recipes) {
+      state.recipes = recipes
     },
     setRandomRecipes(state, recipes) {
       state.randomRecipes = recipes
@@ -94,7 +94,6 @@ export default new Vuex.Store({
       let recipes = JSON.parse(localStorage.getItem("recipes")) //checking for recipes in local storage
       try {
         if (!recipes) {
-          debugger
           let res = await api.get('/recipe/random' + `?q=${data.query}`)
           commit("setRandomRecipes", res.data)
           localStorage.setItem("recipes", JSON.stringify(res.data)) //sets them in local storage

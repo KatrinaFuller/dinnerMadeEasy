@@ -1,9 +1,5 @@
 <template>
-  <div class="randomRecipe">
-    <!-- <h1>{{recipes.label}}</h1>
-    <img :src="recipes.image" />
-    <p>{{recipes.ingredientLines}}</p>-->
-  </div>
+  <div class="randomRecipe"></div>
 </template>
 
 
