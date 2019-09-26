@@ -32,7 +32,7 @@ export default {
     homeHeader,
     dropdowns,
     randomRecipeButton,
-    randomRecipe
+    activeRecipe
   }
 };
 </script>
