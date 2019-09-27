@@ -32,13 +32,13 @@
               />
             </div>
             <div class="form-group">
-              <!-- <label for="ingredientLines">Ingredients</label> -->
+              <!-- <label for="ingredients">Ingredients</label> -->
               <input
                 type="text"
                 class="form-control"
                 id="ingredientLines"
                 placeholder="Enter Ingredients"
-                v-model="newRecipe.ingredientLines"
+                v-model="newRecipe.ingredients"
               />
             </div>
             <div class="form-group">
