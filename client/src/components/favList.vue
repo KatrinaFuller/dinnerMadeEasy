@@ -18,7 +18,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("getFavorites");
+    this.$store.dispatch("addToFavorites");
   },
   methods: {},
   components: { recipe }

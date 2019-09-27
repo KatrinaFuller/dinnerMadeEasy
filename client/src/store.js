@@ -84,7 +84,7 @@ export default new Vuex.Store({
       try {
         console.log(`Sending data ${JSON.stringify(data)}`)
         let res = await api.post('/recipe', data)
-        dispatch('getFavorites') //might need to change this name
+        dispatch('addToFavorites') //might need to change this name
       } catch (e) {
         console.warn(e.message)
       }
@@ -113,8 +113,9 @@ export default new Vuex.Store({
 
     //   }
     // }
-    async getFavorites({ commit, dispatch }, data) {
+    async addToFavorites({ commit, dispatch }, data) {
       try {
+        debugger
         let res = await api.post(`/recipe/myRecipes`)
         commit('setFavRecipes', res.data)
 
@@ -126,11 +127,17 @@ export default new Vuex.Store({
     async removeRecipe({ dispatch }, data) {
       try {
         let res = await api.delete('/recipe/' + data._id)
-        dispatch('getFavorites')
+        dispatch('addToFavorites')
       } catch (error) {
+        console.error(error)
 
       }
-    }
+    },
+
+
+
+
+
   }
 
 

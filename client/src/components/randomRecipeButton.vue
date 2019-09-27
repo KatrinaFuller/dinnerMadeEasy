@@ -9,11 +9,12 @@
         <h4>
           <b>Ingredients:</b>
         </h4>
-        <p
-          class="card-text"
-          v-for="ingredient in recipe.ingredients"
-          :key="ingredient._id"
-        >{{ingredient.text}}</p>
+        <p class="card-text" v-for="ingredient in recipe.ingredients" :key="ingredient._id">
+          <button class="btn btn-primary">+</button>
+          {{ingredient.text}}
+        </p>
+        <button class="btn btn-primary" @click="addToFavorites">Add to My Favorites</button>
+        <!-- <button class="btn btn-primary" @click="addToTry">Recipe to try</button> -->
       </div>
     </div>
   </div>
@@ -36,6 +37,11 @@ export default {
   methods: {
     generate() {
       this.$store.dispatch("generate", {});
+    },
+    addToFavorites() {
+      debugger;
+      this.recipe.type = "favorites";
+      this.$store.dispatch("addToFavorites");
     }
   },
   components: {}
