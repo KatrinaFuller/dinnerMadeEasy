@@ -39,7 +39,6 @@ export default {
       this.$store.dispatch("generate", {});
     },
     addToFavorites() {
-      debugger;
       this.recipe.type = "favorites";
       this.$store.dispatch("addToFavorites");
     }

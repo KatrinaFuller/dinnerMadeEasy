@@ -3,6 +3,11 @@
     <profileNavBar />
     <div class="container-fluid">
       <div class="row">
+        <div class="col">
+          <groceryList />
+        </div>
+      </div>
+      <div class="row">
         <div class="col-4">
           <addRecipeModal />
           <p>Your Favorite Recipes</p>
@@ -26,6 +31,7 @@
 import profileNavBar from "../components/profileNavBar";
 import addRecipeModal from "../components/addRecipeModal";
 import favList from "../components/favList";
+import groceryList from "../components/groceryList";
 
 export default {
   name: "profile",
@@ -38,7 +44,7 @@ export default {
     }
   },
   methods: {},
-  components: { profileNavBar, addRecipeModal, favList }
+  components: { profileNavBar, addRecipeModal, favList, groceryList }
 };
 </script>
 
