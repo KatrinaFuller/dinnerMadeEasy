@@ -1,10 +1,20 @@
 <template>
   <div class="randomRecipeButton pt-4">
     <button type="button" class="btn btn-primary btn-lg" @click="generate">Generate Recipe</button>
-    <div v-if="recipe">
+
+    <div class="card" style="width: 30rem;" v-if="recipe">
       <h1>{{recipe.label}}</h1>
-      <img v-bind:src="`${recipe.image}`" />
-      <p>{{recipe.ingredientLines}}</p>
+      <img alt="Card image cap" v-bind:src="`${recipe.image}`" />
+      <div class="card-body">
+        <h4>
+          <b>Ingredients:</b>
+        </h4>
+        <p
+          class="card-text"
+          v-for="ingredient in recipe.ingredients"
+          :key="ingredient._id"
+        >{{ingredient.text}}</p>
+      </div>
     </div>
   </div>
 </template>

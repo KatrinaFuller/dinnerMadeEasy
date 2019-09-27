@@ -18,7 +18,7 @@ const _model = new Schema({
     url: { type: String },
     dietLabels: [{ type: String }],
     healthLabels: [{ type: String }],
-    ingredientLines: [{ type: String }],
+    ingredients: [{ type: String }],
     type: { type: String, enum: ['favorites', 'toTry'] },
     tags: [{ type: String }],
     ratings: { type: Number },
