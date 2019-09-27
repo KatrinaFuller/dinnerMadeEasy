@@ -98,7 +98,8 @@ export default new Vuex.Store({
           commit("setRandomRecipes", res.data)
           localStorage.setItem("recipes", JSON.stringify(res.data)) //sets them in local storage
         } else {
-          commit("setRecipes", recipes)
+          let i = Math.floor(Math.random() * 99)
+          commit("setRecipes", recipes[i])
         }
       } catch (error) {
         console.error(error)
