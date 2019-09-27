@@ -7,7 +7,8 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{recipe.label}}</h5>
+            <h5 class="card-title inline">{{recipe.label}}</h5>
+            <span class="bg-light text-danger rounded px-1 ml-1 pb-1" @click="removeRecipe">x</span>
             <p class="card-text">Rating: {{recipe.rating}}</p>
           </div>
         </div>
@@ -25,11 +26,22 @@ export default {
     return {};
   },
   computed: {},
-  methods: {},
+  methods: {
+    removeRecipe() {
+      this.$store.dispatch("removeRecipe", this.recipe);
+    }
+  },
   components: {}
 };
 </script>
 
 
 <style scoped>
+.inline {
+  display: inline;
+}
+
+.x {
+  color: #cb3232;
+}
 </style>

@@ -121,6 +121,14 @@ export default new Vuex.Store({
         console.error(error)
 
       }
+    },
+    async removeRecipe({ dispatch }, data) {
+      try {
+        let res = await api.delete('/recipe/' + data._id)
+        dispatch('getFavorites')
+      } catch (error) {
+
+      }
     }
   }
 
