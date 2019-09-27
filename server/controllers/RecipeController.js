@@ -1,7 +1,7 @@
 import express from 'express'
 import RecipeService from '../services/RecipeService';
 import { Authorize } from '../middleware/authorize.js'
-import Axios from "axios"
+import Axios from "axios";
 
 let _recipeService = new RecipeService().repository
 
@@ -19,7 +19,7 @@ export default class RecipeController {
             .get('/random', this.getRandomRecipes)
             .get('/:id', this.getById)
             .use(Authorize.authenticated)
-            .get('/myRecipes', this.getAllByUser)
+            .post('/myRecipes', this.getAllByUser)
             .post('', this.create)
             .post('/:id/notes', this.createNotes)
             .put('/:id', this.edit)
@@ -55,6 +55,7 @@ export default class RecipeController {
             next(error)
         }
     }
+
 
     async getAllByUser(req, res, next) {
         try {

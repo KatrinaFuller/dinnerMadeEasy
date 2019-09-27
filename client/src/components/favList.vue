@@ -1,35 +1,27 @@
 <template>
   <div class="favList">
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src class="card-img" alt="..." />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{recipe.label}}</h5>
-            <p class="card-text">Rating: {{recipe.rating}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <recipe v-for="recipe in recipes" :recipe="recipe" :key="recipe._id" />
   </div>
 </template>
 
 
 <script>
+import recipe from "../components/recipe";
 export default {
   name: "favList",
   data() {
     return {};
   },
   computed: {
-    recipe() {
+    recipes() {
       return this.$store.state.favoriteRecipes;
     }
   },
+  mounted() {
+    this.$store.dispatch("getFavorites");
+  },
   methods: {},
-  components: {}
+  components: { recipe }
 };
 </script>
 

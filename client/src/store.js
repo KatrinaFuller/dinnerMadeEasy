@@ -82,8 +82,9 @@ export default new Vuex.Store({
 
     async addRecipe({ dispatch }, data) {
       try {
+        console.log(`Sending data ${JSON.stringify(data)}`)
         let res = await api.post('/recipe', data)
-        dispatch('getFavorites', data.userId) //might need to change this name
+        dispatch('getFavorites') //might need to change this name
       } catch (e) {
         console.warn(e.message)
       }
@@ -113,7 +114,7 @@ export default new Vuex.Store({
     // }
     async getFavorites({ commit, dispatch }, data) {
       try {
-        let res = await api.get(`/recipes/${data._id}`)
+        let res = await api.post(`/recipe/myRecipes`)
         commit('setFavRecipes', res.data)
 
       } catch (error) {
