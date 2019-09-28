@@ -17,6 +17,11 @@
             data-target="#add-recipe-modal"
           >Add Recipe</button>
           <favList />
+          <button
+            class="btn btn-outline-primary"
+            type="button"
+            @click="MoreFavRecipes"
+          >More Favorite Recipes</button>
         </div>
         <div class="col-4 offset-3">
           <p>Recipes to Try</p>
@@ -32,6 +37,7 @@ import profileNavBar from "../components/profileNavBar";
 import addRecipeModal from "../components/addRecipeModal";
 import favList from "../components/favList";
 import groceryList from "../components/groceryList";
+import router from "@/router.js";
 
 export default {
   name: "profile",
@@ -43,7 +49,11 @@ export default {
       return this.$store.state.user;
     }
   },
-  methods: {},
+  methods: {
+    MoreFavRecipes() {
+      this.$store.dispatch("MoreFavRecipes");
+    }
+  },
   components: { profileNavBar, addRecipeModal, favList, groceryList }
 };
 </script>
