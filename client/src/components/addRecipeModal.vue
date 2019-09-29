@@ -109,7 +109,7 @@ export default {
         .map(item => {
           return { text: item.trim() };
         });
-      debugger;
+      // debugger;
       this.newRecipe.type = "favorites";
       this.$store.dispatch("addRecipe", this.newRecipe);
       $(".close").click();
