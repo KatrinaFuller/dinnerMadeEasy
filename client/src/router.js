@@ -36,6 +36,13 @@ export default new Router({
     },
 
     {
+      path: '/MoreFavRecipes',
+      name: 'MoreFavRecipes',
+      component: function () {
+        return import(/* webpackChunkName: "MoreFavRecipes" */ './views/MoreFavRecipes.vue')
+      }
+    },
+    {
       path: "*",
       redirect: "/"
     },

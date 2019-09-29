@@ -76,13 +76,18 @@ export default new Vuex.Store({
     backButton() {
       router.push({ name: "home" })
     },
+    backToProfile() {
+      router.push({ name: "profile" })
+    },
+    MoreFavRecipes() {
+      router.push({ name: "MoreFavRecipes" })
+    },
     usernameButton() {
       router.push({ name: "profile" })
     },
 
     async addRecipe({ dispatch }, data) {
       try {
-        console.log(`Sending data ${JSON.stringify(data)}`)
         let res = await api.post('/recipe', data)
         dispatch('addToFavorites') //might need to change this name
       } catch (e) {
@@ -115,6 +120,7 @@ export default new Vuex.Store({
     // }
     async addToFavorites({ commit, dispatch }, data) {
       try {
+        // debugger
         let res = await api.post(`/recipe/myRecipes`)
         commit('setFavRecipes', res.data)
 
@@ -123,6 +129,7 @@ export default new Vuex.Store({
 
       }
     },
+
     async removeRecipe({ dispatch }, data) {
       try {
         let res = await api.delete('/recipe/' + data._id)
