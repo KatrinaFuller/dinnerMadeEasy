@@ -104,6 +104,12 @@ export default {
   computed: {},
   methods: {
     addRecipe() {
+      this.newRecipe.ingredients = this.newRecipe.ingredients
+        .split(",")
+        .map(item => {
+          return { text: item.trim() };
+        });
+      debugger;
       this.newRecipe.type = "favorites";
       this.$store.dispatch("addRecipe", this.newRecipe);
       $(".close").click();
