@@ -13,7 +13,7 @@
           <button class="btn btn-primary">+</button>
           {{ingredient.text}}
         </p>
-        <button class="btn btn-primary" @click="addToFavorites(data)">Add to My Favorites</button>
+        <button class="btn btn-primary" @click="addToFavorites()">Add to My Favorites</button>
         <!-- <button class="btn btn-primary" @click="addToTry">Recipe to try</button> -->
       </div>
     </div>
@@ -38,9 +38,10 @@ export default {
     generate() {
       this.$store.dispatch("generate", {});
     },
-    addToFavorites(data) {
+    addToFavorites() {
       this.recipe.type = "favorites";
-      this.$store.dispatch("addToFavorites", this.recipe);
+      // this.$store.dispatch("addToFavorites", this.recipe);
+      this.$store.dispatch("addRecipe", this.recipe);
     }
   },
   components: {}
