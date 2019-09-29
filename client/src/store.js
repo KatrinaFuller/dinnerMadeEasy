@@ -33,7 +33,8 @@ export default new Vuex.Store({
     recipes: [],
     randomRecipes: [],
     favoriteRecipes: [],
-    toTryRecipes: []
+    toTryRecipes: [],
+    groceries: []
   },
   mutations: {
     setUser(state, user) {
