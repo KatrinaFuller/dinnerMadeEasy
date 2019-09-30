@@ -5,7 +5,7 @@
       <ul>
         <li v-for="grocery in groceries" :key="grocery._id">
           {{grocery.description}}
-          <span class="text-red" @click="deleteGrocery()">X</span>
+          <span class="text-red" @click="deleteGrocery(grocery)">X</span>
         </li>
       </ul>
     </div>
@@ -27,7 +27,7 @@
 <script>
 export default {
   name: "groceryList",
-  props: ["grocery"],
+  props: ["groceryProp"],
   data() {
     return {
       newItem: {}
@@ -45,9 +45,9 @@ export default {
     addIngredient() {
       this.$store.dispatch("addIngredient", this.newItem);
     },
-    deleteGrocery() {
+    deleteGrocery(grocery) {
       debugger;
-      this.$store.dispatch("deleteGrocery", this.grocery);
+      this.$store.dispatch("deleteGrocery", grocery);
     }
   },
   components: {}

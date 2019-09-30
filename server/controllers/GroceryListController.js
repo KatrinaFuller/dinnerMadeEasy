@@ -13,6 +13,7 @@ export default class GroceryListController {
       .get('', this.getAll)
       .post('', this.create)
       .put('/:id', this.edit)
+      // .delete('', this.deleteAll)
       .delete('/:id', this.delete)
   }
 
@@ -44,6 +45,14 @@ export default class GroceryListController {
       next(error)
     }
   }
+
+  // async deleteAll(req, res, next) {
+  //   try {
+  //     await _groceryListService.deleteMany({})
+  //   } catch (error) {
+  //     next(error)
+  //   }
+  // }
 
   async delete(req, res, next) {
     try {

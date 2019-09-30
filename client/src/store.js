@@ -162,7 +162,7 @@ export default new Vuex.Store({
 
     async addIngredient({ commit, dispatch }, data) {
       try {
-        debugger
+        // debugger
         let res = await api.post('/grocery', data)
         dispatch('getGroceries')
         console.log(this.state.groceries)
@@ -175,6 +175,16 @@ export default new Vuex.Store({
       try {
         let res = await api.get('/grocery')
         commit("setIngredients", res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    async deleteGrocery({ commit, dispatch }, data) {
+      try {
+        debugger
+        let res = await api.delete('/grocery/' + data._id)
+        dispatch('getGroceries')
       } catch (error) {
         console.error(error)
       }
