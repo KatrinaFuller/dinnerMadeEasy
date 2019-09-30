@@ -4,6 +4,7 @@
     <div class="groceryList">
       <ul>
         <li v-for="grocery in groceries" :key="grocery._id">
+          <input type="checkbox" @click="toggleCompletedStatus(grocery)" />
           {{grocery.description}}
           <span class="text-red" @click="deleteGrocery(grocery)">X</span>
         </li>
@@ -46,8 +47,10 @@ export default {
       this.$store.dispatch("addIngredient", this.newItem);
     },
     deleteGrocery(grocery) {
-      debugger;
       this.$store.dispatch("deleteGrocery", grocery);
+    },
+    toggleCompletedStatus(grocery) {
+      this.$store.dispatch("toggleCompletedStatus", grocery);
     }
   },
   components: {}

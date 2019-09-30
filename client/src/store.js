@@ -182,12 +182,15 @@ export default new Vuex.Store({
 
     async deleteGrocery({ commit, dispatch }, data) {
       try {
-        debugger
         let res = await api.delete('/grocery/' + data._id)
         dispatch('getGroceries')
       } catch (error) {
         console.error(error)
       }
+    },
+
+    async toggleCompletedStatus({ commit, dispatch }) {
+
     }
 
 
