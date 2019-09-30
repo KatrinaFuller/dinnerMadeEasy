@@ -138,6 +138,16 @@ export default new Vuex.Store({
       }
     },
 
+    async addIngredient({ commit }, data) {
+      try {
+        debugger
+        let res = await api.post('/grocery', data)
+        commit('setIngredients', res.data)
+        console.log(this.state.groceries)
+      } catch (error) {
+        console.error(error)
+      }
+    }
 
 
 

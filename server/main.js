@@ -43,10 +43,11 @@ server.use('/account', new AuthController().router)
 
 //NOTE we have to import access to our controllers
 import RecipeController from './controllers/RecipeController'
+import GroceryListController from './controllers/GroceryListController'
 
 //NOTE remember the forward slash at the start of your path!
 server.use('/api/recipe', new RecipeController().router)
-
+server.use('/api/grocery', new GroceryListController().router)
 
 
 //NOTE Everything below this line always stays the same
