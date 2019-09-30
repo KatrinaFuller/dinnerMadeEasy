@@ -10,7 +10,6 @@
           <b>Ingredients:</b>
         </h4>
         <p class="card-text" v-for="ingredient in recipe.ingredients" :key="ingredient._id">
-          <button class="btn btn-primary" @click="addToGroceryList()">+</button>
           {{ingredient.text}}
         </p>
         <button class="btn btn-primary" @click="addToFavorites()">Add to My Favorites</button>
@@ -45,10 +44,6 @@ export default {
       this.recipe.type = "favorites";
       // this.$store.dispatch("addToFavorites", this.recipe);
       this.$store.dispatch("addRecipe", this.recipe);
-    },
-    addToGroceryList() {
-      // debugger;
-      this.$store.dispatch("addIngredient", this.ingredient);
     }
   },
   components: {}

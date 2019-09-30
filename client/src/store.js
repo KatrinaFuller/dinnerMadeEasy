@@ -116,13 +116,6 @@ export default new Vuex.Store({
       }
     },
 
-    // async getRecipe(name) {
-    //   try {
-    //     let res = await api.get()
-    //   } catch (error) {
-
-    //   }
-    // }
     async addToFavorites({ commit, dispatch }, data) {
       try {
         // debugger
@@ -145,27 +138,7 @@ export default new Vuex.Store({
       }
     },
 
-    async addIngredient({ dispatch }, data) {
-      try {
-        // debugger
-        let res = await api.post('/recipe', data) //I can get to this line but it is not going to the next line, going straight to error
-        dispatch('addToGroceryList')
-      } catch (e) {
-        console.error("store.js: addIngredient")
-      }
-    },
-    // not making it down to this part yet
-    async addToGroceryList({ commit, dispatch }, data) {
-      try {
-        // debugger
-        let res = await api.post(`/recipe/myRecipes`)
-        commit('setIngredients', res.data)
 
-      } catch (error) {
-        console.error("store.js: addToGroceryList")
-
-      }
-    },
 
 
 
