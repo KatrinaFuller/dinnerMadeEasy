@@ -4,7 +4,11 @@
     <div class="groceryList">
       <ul>
         <li v-for="grocery in groceries" :key="grocery._id">
-          <input type="checkbox" @click="toggleCompletedStatus(grocery)" />
+          <input
+            type="checkbox"
+            v-model="grocery.completed"
+            @click="toggleCompletedStatus(grocery)"
+          />
           {{grocery.description}}
           <span class="text-red" @click="deleteGrocery(grocery)">X</span>
         </li>
@@ -50,6 +54,7 @@ export default {
       this.$store.dispatch("deleteGrocery", grocery);
     },
     toggleCompletedStatus(grocery) {
+      grocery.completed = !grocery.completed;
       this.$store.dispatch("toggleCompletedStatus", grocery);
     }
   },

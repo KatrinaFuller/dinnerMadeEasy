@@ -109,7 +109,7 @@ export default new Vuex.Store({
         dispatch('addToTryList')
         alert("added to recipes to try")
       } catch (error) {
-        console.warn(e.message)
+        console.warn(error.message)
       }
     },
     async addToTryList({ commit }) {
@@ -173,6 +173,7 @@ export default new Vuex.Store({
 
     async getGroceries({ commit, dispatch }) {
       try {
+        debugger
         let res = await api.get('/grocery')
         commit("setIngredients", res.data)
       } catch (error) {
@@ -189,8 +190,16 @@ export default new Vuex.Store({
       }
     },
 
-    async toggleCompletedStatus({ commit, dispatch }) {
+    async toggleCompletedStatus({ commit }, data) {
+      try {
+        // debugger
+        let res = await api.put('/grocery/' + data._id)
+        commit('setIngredients')
 
+      } catch (error) {
+        console.error(error)
+
+      }
     }
 
 
