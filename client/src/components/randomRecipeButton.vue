@@ -32,6 +32,9 @@ export default {
   computed: {
     recipe() {
       return this.$store.state.recipes.recipe;
+    },
+    ingredient() {
+      return this.$store.state.recipes.recipe.ingredients;
     }
   },
   methods: {
@@ -44,7 +47,8 @@ export default {
       this.$store.dispatch("addRecipe", this.recipe);
     },
     addToGroceryList() {
-      this.$store.dispatch("addToGroceryList");
+      // debugger;
+      this.$store.dispatch("addIngredient", this.ingredient);
     }
   },
   components: {}
