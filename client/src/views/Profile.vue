@@ -25,6 +25,7 @@
         </div>
         <div class="col-4 offset-3">
           <p>Recipes to Try</p>
+          <toTryList />
         </div>
       </div>
     </div>
@@ -38,6 +39,7 @@ import addRecipeModal from "../components/addRecipeModal";
 import favList from "../components/favList";
 import groceryList from "../components/groceryList";
 import router from "@/router.js";
+import toTryList from "../components/toTryList";
 
 export default {
   name: "profile",
@@ -54,7 +56,7 @@ export default {
       this.$store.dispatch("MoreFavRecipes");
     }
   },
-  components: { profileNavBar, addRecipeModal, favList, groceryList }
+  components: { profileNavBar, addRecipeModal, favList, groceryList, toTryList }
 };
 </script>
 
