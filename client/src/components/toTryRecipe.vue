@@ -19,29 +19,31 @@
 
 
 <script>
-export default {
-  name: "toTryRecipe",
-  props: ["toTryRecipe"],
-  data() {
-    return {};
-  },
-  computed: {},
-  methods: {
-    removetoTryRecipe() {
-      this.$store.dispatch("removetoTryRecipe", this.toTryRecipe);
-    }
-  },
-  components: {}
-};
+// export default {
+//   name: "toTryRecipe",
+//   props: ["toTryRecipe"],
+//   data() {
+//     return {};
+//   },
+//   computed: {},
+//   methods: {
+//     removetoTryRecipe() {
+//       this.$store.dispatch("removetoTryRecipe", this.toTryRecipe);
+//     }
+//   },
+//   components: {}
+// };
+//
 </script>
 
 
-<style scoped>
-.inline {
-  display: inline;
-}
+// <style scoped>
+// .inline {
+//   display: inline;
+// }
 
-.x {
-  color: #cb3232;
-}
+// .x {
+//   color: #cb3232;
+// }
+//
 </style>
