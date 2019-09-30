@@ -51,15 +51,15 @@ export default new Vuex.Store({
       state.randomRecipes = recipes
     },
 
-    setFavRecipes(state, recipes) {
-      state.favoriteRecipes = recipes
+    setFavRecipes(state, favoriteRecipes) {
+      state.favoriteRecipes = favoriteRecipes
     },
 
     setIngredients(state, groceries) {
       state.groceries = groceries
     },
-    setToTry(state, recipes) {
-      state.toTryRecipes = recipes
+    setToTry(state, toTryRecipes) {
+      state.toTryRecipes = toTryRecipes
     }
   },
   actions: {
@@ -98,6 +98,7 @@ export default new Vuex.Store({
       try {
         let res = await api.post('/recipe', data)
         dispatch('addToFavorites') //might need to change this name
+        alert("added to Favorite List")
       } catch (e) {
         console.warn(e.message)
       }
@@ -106,6 +107,7 @@ export default new Vuex.Store({
       try {
         let res = await api.post('/recipe', data)
         dispatch('addToTryList')
+        alert("added to recipes to try")
       } catch (error) {
         console.warn(e.message)
       }
@@ -140,6 +142,7 @@ export default new Vuex.Store({
         // debugger
         let res = await api.post(`/recipe/myRecipes`)
         commit('setFavRecipes', res.data)
+
 
       } catch (error) {
         console.error(error)
