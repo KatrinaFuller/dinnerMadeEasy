@@ -57,6 +57,9 @@ export default new Vuex.Store({
 
     setIngredients(state, groceries) {
       state.groceries = groceries
+    },
+    setToTry(state, recipes) {
+      state.toTryRecipes = recipes
     }
   },
   actions: {
@@ -97,6 +100,22 @@ export default new Vuex.Store({
         dispatch('addToFavorites') //might need to change this name
       } catch (e) {
         console.warn(e.message)
+      }
+    },
+    async addToTry({ dispatch }, data) {
+      try {
+        let res = await api.post('/recipe', data)
+        dispatch('addToTryList')
+      } catch (error) {
+        console.warn(e.message)
+      }
+    },
+    async addToTryList({ commit }) {
+      try {
+        let res = await api.post('/recipe/myRecipes')
+        commit("setToTry", res.data)
+      } catch (error) {
+        console.error(error)
       }
     },
 
