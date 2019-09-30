@@ -96,11 +96,25 @@ export default new Vuex.Store({
 
     async addRecipe({ dispatch }, data) {
       try {
-        let res = await api.post('/recipe', data)
+        debugger
+        let res = await api.post('/recipe/favRecipes', data)
         dispatch('addToFavorites') //might need to change this name
         alert("added to Favorite List")
       } catch (e) {
         console.warn(e.message)
+      }
+    },
+
+    async addToFavorites({ commit, dispatch }, data) {
+      try {
+        debugger
+        let res = await api.get(`/recipe/favRecipes`)
+        commit('setFavRecipes', res.data)
+
+
+      } catch (error) {
+        console.error(error)
+
       }
     },
     async addToTry({ dispatch }, data) {
@@ -108,13 +122,13 @@ export default new Vuex.Store({
         let res = await api.post('/recipe', data)
         dispatch('addToTryList')
         alert("added to recipes to try")
-      } catch (error) {
+      } catch (e) {
         console.warn(e.message)
       }
     },
     async addToTryList({ commit }) {
       try {
-        let res = await api.post('/recipe/myRecipes')
+        let res = await api.post('/recipe/toTryRecipes')
         commit("setToTry", res.data)
       } catch (error) {
         console.error(error)
@@ -134,19 +148,6 @@ export default new Vuex.Store({
         }
       } catch (error) {
         console.error(error)
-      }
-    },
-
-    async addToFavorites({ commit, dispatch }, data) {
-      try {
-        // debugger
-        let res = await api.post(`/recipe/myRecipes`)
-        commit('setFavRecipes', res.data)
-
-
-      } catch (error) {
-        console.error(error)
-
       }
     },
 

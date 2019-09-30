@@ -19,8 +19,11 @@ export default class RecipeController {
             .get('/random', this.getRandomRecipes)
             .get('/:id', this.getById)
             .use(Authorize.authenticated)
-            .post('/myRecipes', this.getAllByUser)
-            .post('', this.create)
+            // .get('/recipe')
+            .get('/favRecipes', this.getAllByUser)
+            .get('/toTryRecipes', this.getAllByUser)
+            .post('/favRecipes', this.createFavRecipes)
+            .post('/toTryRecipes', this.createToTryRecipes)
             .post('/:id/notes', this.createNotes)
             .put('/:id', this.edit)
             .put('/:id/notes', this.deleteNotes)
@@ -68,7 +71,16 @@ export default class RecipeController {
 
     }
 
-    async create(req, res, next) {
+    async createFavRecipes(req, res, next) {
+        try {
+            //NOTE the user id is accessable through req.body.uid, never trust the client to provide you this information
+            req.body.userId = req.session.uid
+            let data = await _recipeService.create(req.body)
+            res.send(data)
+        } catch (error) { next(error) }
+    }
+
+    async createToTryRecipes(req, res, next) {
         try {
             //NOTE the user id is accessable through req.body.uid, never trust the client to provide you this information
             req.body.userId = req.session.uid

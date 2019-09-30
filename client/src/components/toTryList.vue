@@ -1,12 +1,12 @@
 <template>
   <div class="toTryList">
-    <toTryRecipe v-for="recipe in toTryRecipes" :toTryRecipe="recipe" :key="recipe._id" />
+    <recipe v-for="recipe in recipes" :recipe="recipe" :key="recipe._id" />
   </div>
 </template>
 
 
 <script>
-import toTryRecipe from "../components/toTryRecipe";
+import recipe from "../components/recipe";
 export default {
   name: "toTryList",
   data() {
@@ -21,7 +21,7 @@ export default {
     this.$store.dispatch("addToTry");
   },
   methods: {},
-  components: { toTryRecipe }
+  components: { recipe }
 };
 </script>
 
