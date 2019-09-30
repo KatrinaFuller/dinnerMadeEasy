@@ -2,7 +2,12 @@
   <div class="groceryList border">
     Grocery List:
     <div class="groceryList">
-      <grocery v-for="grocery in groceries" :key="grocery._id" />
+      <ul>
+        <li v-for="grocery in groceries" :key="grocery._id">
+          {{grocery.description}}
+          <span class="text-red" @click="deleteGrocery()">X</span>
+        </li>
+      </ul>
     </div>
     <div class="input-group mb-3 col-4">
       <input
@@ -22,14 +27,15 @@
 <script>
 export default {
   name: "groceryList",
+  props: ["grocery"],
   data() {
     return {
       newItem: {}
     };
   },
-  // mounted() {
-  //   this.$store.dispatch("addIngredient");
-  // },
+  mounted() {
+    this.$store.dispatch("getGroceries");
+  },
   computed: {
     groceries() {
       return this.$store.state.groceries;
@@ -38,6 +44,10 @@ export default {
   methods: {
     addIngredient() {
       this.$store.dispatch("addIngredient", this.newItem);
+    },
+    deleteGrocery() {
+      debugger;
+      this.$store.dispatch("deleteGrocery", this.grocery);
     }
   },
   components: {}
@@ -46,4 +56,7 @@ export default {
 
 
 <style scoped>
+.text-red {
+  color: red;
+}
 </style>
