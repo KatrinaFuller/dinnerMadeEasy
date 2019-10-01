@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title inline">{{recipe.label}}</h5>
+            <h5 class="card-title inline">{{recipe.type}}-{{recipe.label}}</h5>
             <span class="bg-light text-danger rounded px-1 ml-1 pb-1" @click="removeRecipe">x</span>
             <p class="card-text">Rating: {{recipe.rating}}</p>
           </div>

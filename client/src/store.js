@@ -96,7 +96,7 @@ export default new Vuex.Store({
 
     async addRecipe({ dispatch }, data) {
       try {
-        debugger
+
         let res = await api.post('/recipe/favRecipes', data)
         dispatch('addToFavorites') //might need to change this name
         alert("added to Favorite List")
@@ -108,7 +108,7 @@ export default new Vuex.Store({
     async addToFavorites({ commit, dispatch }, data) {
       try {
         // debugger
-        let res = await api.get(`/recipe/favRecipes`)
+        let res = await api.get(`/recipe?type=favorites`)
         commit('setFavRecipes', res.data)
 
 
@@ -119,7 +119,8 @@ export default new Vuex.Store({
     },
     async addToTry({ dispatch }, data) {
       try {
-        let res = await api.post('/recipe', data)
+        let res = await api.post('/recipe/toTryRecipes', data)
+        console.log("got")
         dispatch('addToTryList')
         alert("added to recipes to try")
       } catch (e) {
@@ -128,7 +129,7 @@ export default new Vuex.Store({
     },
     async addToTryList({ commit }) {
       try {
-        let res = await api.post('/recipe/toTryRecipes')
+        let res = await api.get('/recipe?type=toTry')
         commit("setToTry", res.data)
       } catch (error) {
         console.error(error)
@@ -155,6 +156,7 @@ export default new Vuex.Store({
       try {
         let res = await api.delete('/recipe/' + data._id)
         dispatch('addToFavorites')
+        dispatch('addToTryList')
       } catch (error) {
         console.error(error)
 

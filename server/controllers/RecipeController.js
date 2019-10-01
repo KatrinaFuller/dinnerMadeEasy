@@ -15,11 +15,13 @@ export default class RecipeController {
     constructor() {
         this.router = express.Router()
             //NOTE all routes after the authenticate method will require the user to be logged in to access
+            .get(':type', this.getByType)
             .get('', this.getAll)
             .get('/random', this.getRandomRecipes)
             .get('/:id', this.getById)
             .use(Authorize.authenticated)
             // .get('/recipe')
+
             .get('/favRecipes', this.getAllByUser)
             .get('/toTryRecipes', this.getAllByUser)
             .post('/favRecipes', this.createFavRecipes)
@@ -32,7 +34,17 @@ export default class RecipeController {
 
     async getAll(req, res, next) {
         try {
-            let data = await _recipeService.find({})
+            console.log('get all' + req.query.type);
+            let type = req.query.type || '';
+            let data = [];
+            if (type.length > 1) {
+                console.log('get by type')
+                data = await _recipeService.find({ userId: req.session.uid, type: req.query.type })
+            } else {
+                console.log('get all')
+                data = await _recipeService.find({})
+            }
+
             return res.send(data)
         } catch (error) { next(error) }
 
@@ -58,7 +70,18 @@ export default class RecipeController {
             next(error)
         }
     }
+    async getByType(req, res, next) {
+        try {
+            let data = await _recipeService.find({ userId: req.session.uid, type: req.query.type })
+            if (!data) {
+                throw new Error("Invalid User Id")
+            }
+            return res.send(data)
+        } catch (error) {
+            next(error)
 
+        }
+    }
 
     async getAllByUser(req, res, next) {
         try {
