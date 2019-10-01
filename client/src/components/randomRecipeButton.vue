@@ -15,7 +15,7 @@
             :key="ingredient._id"
           >{{ingredient.text}}</p>
           <button class="btn btn-primary mx-1" @click="addToFavorites()">Add to My Favorites</button>
-          <button class="btn btn-primary mx-1" @click="addToTry">Recipe to try</button>
+          <button class="btn btn-primary mx-1" @click="addToTry()">Recipe to try</button>
           <button class="btn btn-outline-info mx-1 text-white">
             <a v-bind:href="`${recipe.url}`" target="_blank">Go To Recipe</a>
           </button>
