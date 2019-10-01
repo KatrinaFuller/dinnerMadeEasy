@@ -24,7 +24,7 @@
         />
         </a>
       </div>
-      <div class="carousel-item h100 caro-item-1 active">
+      <div class="carousel-item h100 caro-item-1">
         <a href="https://www.epicurious.com/recipes/food/views/baked-gefilte-fish-51154400" target="_blank">
         <img
           class="mx-2"

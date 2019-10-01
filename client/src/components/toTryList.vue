@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     recipes() {
-      return this.$store.state.toTryRecipes;
+      return this.$store.state.toTryRecipes.slice(0,5);
     }
   },
   mounted() {

@@ -24,8 +24,13 @@
           >More Favorite Recipes</button>
         </div>
         <div class="col-4 offset-3">
-          <p>Recipes to Try</p>
           <toTryList />
+             <button
+            class="btn btn-outline-primary"
+            type="button"
+            @click="MoreToTry"
+          >More Recipes To Try</button>
+          <p>Recipes to Try</p>
         </div>
       </div>
     </div>
@@ -57,6 +62,9 @@ export default {
   methods: {
     MoreFavRecipes() {
       this.$store.dispatch("MoreFavRecipes");
+    },
+    MoreToTry(){
+      this.$store.dispatch("MoreToTry")
     }
   },
   components: { profileNavBar, addRecipeModal, favList, groceryList, toTryList }

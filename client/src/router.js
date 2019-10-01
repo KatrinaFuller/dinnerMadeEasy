@@ -43,6 +43,15 @@ export default new Router({
       }
     },
     {
+      path: '/MoreToTry',
+      name: "MoreToTry",
+      component: function () {
+        return import(/* webpackChunkName: "MoreToTry" */ './views/MoreToTry.vue')
+      }
+
+
+    },
+    {
       path: '/activeRecipe',
       name: 'activeRecipe',
       component: function () {

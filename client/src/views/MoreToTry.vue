@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
-    <h1>More of your favorite recipes</h1>
     <div class="row">
-      <div class="MoreFavorites justify-content-start">
+    <h1>More of your recipes to try</h1>
+      <div class="MoreToTry justify-content-start">
         <button class="btn btn-outline-primary" type="button" @click="backToProfile">Back to Profile</button>
       </div>
     </div>
@@ -15,17 +15,17 @@
 import router from "@/router.js";
 import recipe from "../components/recipe"
 export default {
-  name: "MoreFavorites",
+  name: "MoreToTry",
   data() {
     return {};
   },
   computed: {
       recipes() {
-      return this.$store.state.favoriteRecipes;
+      return this.$store.state.toTryRecipes;
     }
   },
   mounted(){
-    this.$store.dispatch("addToFavorites");
+    this.$store.dispatch("addToTryList");
   },
   methods: {
     backToProfile() {
