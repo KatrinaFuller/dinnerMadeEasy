@@ -114,9 +114,9 @@ export default new Vuex.Store({
 
     async addNote({ dispatch }, data) {
       try {
-        debugger
+        // debugger
         let res = await api.post(`/recipe/${data.recipeId}/notes`, data)
-        dispatch("getRecipeById", data.recipeId)
+        dispatch("getRecipeById", data)
       } catch (error) {
         console.error(error)
       }
@@ -178,6 +178,7 @@ export default new Vuex.Store({
 
     async getRecipeById({ commit }, payload) {
       try {
+        debugger
         let res = await api.get(`/recipe/${payload.recipeId}`)
         commit("setActiveRecipe", res.data)
       } catch (error) {
