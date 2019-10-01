@@ -177,7 +177,6 @@ export default new Vuex.Store({
       try {
         let res = await api.post('/grocery', data)
         dispatch('getGroceries')
-        console.log(this.state.groceries)
       } catch (error) {
         console.error(error)
       }
