@@ -7,7 +7,6 @@
     <!-- carousel -->
     <carousel />
     <!-- 2 dropdowns -->
-    <dropdowns />
     <!-- random recipe button -->
     <randomRecipeButton />
   </div>
@@ -18,7 +17,6 @@
 import navbar from "../components/navbar";
 import carousel from "../components/carousel";
 import homeHeader from "../components/homeHeader";
-import dropdowns from "../components/dropdowns";
 import randomRecipeButton from "../components/randomRecipeButton";
 
 export default {
@@ -27,7 +25,6 @@ export default {
     carousel,
     navbar,
     homeHeader,
-    dropdowns,
     randomRecipeButton
   }
 };

@@ -18,7 +18,7 @@ let base = window.location.host.includes('localhost:8080') ? '//localhost:3000/'
 
 let api = Axios.create({
   baseURL: base + "api/",
-  timeout: 3000,
+  timeout: 999999999,
   withCredentials: true
 })
 
@@ -137,16 +137,25 @@ export default new Vuex.Store({
     },
 
     async generate({ commit, dispatch }, data) {
+
       let recipes = JSON.parse(localStorage.getItem("recipes")) //checking for recipes in local storage
       try {
-        if (!recipes) {
-          let res = await api.get('/recipe/random' + `?q=${data.query}`)
+        if (!recipes || data.random) {
+          let url = '/recipe/random' 
+          url += data.query ? `?q=${data.query}` : ""
+          if (!data.query) {
+            url += data.diet ? "?diet=" + data.diet : ""
+          } else {
+            url += data.diet ? "&diet=" + data.diet : ""
+          }
+          let res = await api.get(url)
           commit("setRandomRecipes", res.data)
           localStorage.setItem("recipes", JSON.stringify(res.data)) //sets them in local storage
-        } else {
+          recipes = res.data
+        }
           let i = Math.floor(Math.random() * 99)
           commit("setRecipes", recipes[i])
-        }
+
       } catch (error) {
         console.error(error)
       }
@@ -196,21 +205,12 @@ export default new Vuex.Store({
       try {
         let res = await api.put('/grocery/' + data._id, data)
         dispatch('getGroceries')
-
       } catch (error) {
         console.error(error)
 
       }
     }
-
-
-
-
-
-
   }
-
-
 })
 
 

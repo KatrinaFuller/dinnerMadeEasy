@@ -1,4 +1,30 @@
 <template>
+  <div class="pt-5">
+    <div>
+      <h6>Main Ingredient</h6>
+      <select class="dropdown" v-model="mainIngredient">
+        <option disabled value></option>
+        <option>random</option>
+        <option>chicken</option>
+        <option>beef</option>
+        <option>pork</option>
+        <option>ham</option>
+        <option>turkey</option>
+        <option>fish</option>
+      </select>
+    </div>
+    <div class="pt-4">
+      <h6>Dietary Requirement</h6>
+      <select class="dropdown" v-model="dietaryRequirement">
+        <option disabled value></option>
+        <option>low-carb</option>
+        <option>low-fat</option>
+        <option>low-sodium</option>
+        <option>high-protein</option>
+        <option>high-fiber</option>
+        <option>balanced</option>
+      </select>
+      </div>
   <div class="randomRecipeButton pt-4">
     <button type="button" class="btn btn-primary btn-lg" @click="generate">Generate Recipe</button>
     <div class="row justify-content-center pt-4">
@@ -20,6 +46,10 @@
             <a v-bind:href="`${recipe.url}`" target="_blank">Go To Recipe</a>
           </button>
         </div>
+        </div>
+       <div v-else class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
       </div>
     </div>
   </div>
@@ -31,7 +61,9 @@ export default {
   name: "randomRecipeButton",
   data() {
     return {
-      show: false
+      show: false,
+      mainIngredient: "",
+      dietaryRequirement: ""
     };
   },
   computed: {
@@ -42,9 +74,20 @@ export default {
       return this.$store.state.recipes.recipe.ingredients;
     }
   },
+  mounted(){
+    this.$store.dispatch("generate", {})
+  },
   methods: {
     generate() {
-      this.$store.dispatch("generate", {});
+      this.$store.commit("setRecipes", {})
+      let data = {random: true}
+      if(this.mainIngredient){
+        data.query = this.mainIngredient
+      }
+      if(this.dietaryRequirement){
+        data.diet = this.dietaryRequirement
+      }
+      this.$store.dispatch("generate", data);
     },
     addToFavorites() {
       this.recipe.type = "favorites";
@@ -62,4 +105,7 @@ export default {
 
 
 <style scoped>
+.dropdown {
+  width: 20vw;
+}
 </style>

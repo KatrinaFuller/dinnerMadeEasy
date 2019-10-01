@@ -61,7 +61,12 @@ export default class RecipeController {
     async getRandomRecipes(req, res, next) {
         try {
             let options = randomizeQueryAndGetMaxCount(req.query.q)
-            let url = apiKey + '&q=' + options.query + '&to=' + options.maxTo + '&from=' + (options.maxTo - 100)
+            let url = apiKey
+            if (req.query.diet != undefined) {
+                options.maxTo = 200
+            }
+            url += '&q=' + options.query + '&to=' + options.maxTo + '&from=' + (options.maxTo - 100)
+            url += req.query.diet != undefined ? "&diet=" + req.query.diet : ""
             let data = await _foodapi.get(url)
             res.send(data.data.hits)
         } catch (error) {
@@ -143,7 +148,8 @@ export default class RecipeController {
 
 let options = {
     beef: 69809,
-    chicken: 170158
+    chicken: 170158,
+    //add count to other queries
 }
 
 function randomizeQueryAndGetMaxCount(query) {
@@ -152,5 +158,7 @@ function randomizeQueryAndGetMaxCount(query) {
         query = keys[Math.floor(Math.random() * keys.length)]
     }
     let maxTo = Math.floor(Math.random() * (options[query]))
-    return { query, maxTo: maxTo > 100 ? maxTo : 100 }
+    //NOTE while api not working
+    maxTo = Math.floor(Math.random()*5900)
+    return { query, maxTo: maxTo > 100 ? maxTo : 100}
 }
