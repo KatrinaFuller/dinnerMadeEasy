@@ -1,6 +1,6 @@
 <template>
   <div class="recipe">
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3" style="max-width: 540px;" @click="viewRecipe()">
       <div class="row no-gutters">
         <div class="col-md-4">
           <img v-bind:src="`${recipe.image}`" class="card-img" alt="..." />
@@ -29,6 +29,12 @@ export default {
   methods: {
     removeRecipe() {
       this.$store.dispatch("removeRecipe", this.recipe);
+    },
+    viewRecipe() {
+      this.$router.push({
+        name: "activeRecipe",
+        params: { recipeId: this.recipe._id, recipeType: this.recipe.type }
+      });
     }
   },
   components: {}

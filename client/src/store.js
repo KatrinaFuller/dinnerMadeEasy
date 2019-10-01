@@ -34,7 +34,8 @@ export default new Vuex.Store({
     randomRecipes: [],
     favoriteRecipes: [],
     toTryRecipes: [],
-    groceries: []
+    groceries: [],
+    activeRecipe: {}
   },
   mutations: {
     setUser(state, user) {
@@ -60,6 +61,9 @@ export default new Vuex.Store({
     },
     setToTry(state, toTryRecipes) {
       state.toTryRecipes = toTryRecipes
+    },
+    setActiveRecipe(state, payload) {
+      state.activeRecipe = payload
     }
   },
   actions: {
@@ -161,6 +165,14 @@ export default new Vuex.Store({
       }
     },
 
+    async getRecipeById({ commit }, payload) {
+      try {
+        let res = await api.get(`/recipe/${payload.recipeId}`)
+        commit("setActiveRecipe", res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async removeRecipe({ dispatch }, data) {
       try {
         let res = await api.delete('/recipe/' + data._id)
@@ -186,7 +198,6 @@ export default new Vuex.Store({
       try {
         let res = await api.post('/grocery', data)
         dispatch('getGroceries')
-        console.log(this.state.groceries)
       } catch (error) {
         console.error(error)
       }
