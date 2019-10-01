@@ -6,12 +6,20 @@
       </div>
     </div>
     <div class="row" v-if="recipe">
-      <h1>Title: {{recipe.label}}</h1>
-      <img v-bind:src="`${recipe.image}`" />
-      <h4>
-        <b>Ingredients:</b>
-      </h4>
-      <p v-for="ingredient in recipe.ingredients" :key="ingredient._id">{{ingredient.text}}</p>
+      <div class="col-12">
+        <h1>{{recipe.label}}</h1>
+      </div>
+      <div class="col-12 text-center">
+        <img v-bind:src="`${recipe.image}`" />
+      </div>
+      <div class="col-12 text-center">
+        <h4>
+          <b>Ingredients:</b>
+        </h4>
+        <ul>
+          <li v-for="ingredient in recipe.ingredients" :key="ingredient._id">{{ingredient.text}}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -26,12 +34,19 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    let payload = {
+      recipeId: this.$route.params.recipeId,
+      recipeType: this.$route.params.recipeType
+    };
+    this.$store.dispatch("getRecipeById", payload);
+  },
   computed: {
     recipe() {
-      return this.$store.state.recipes.recipe;
+      return this.$store.state.activeRecipe;
     },
     ingredient() {
-      return this.$store.state.recipes.recipe.ingredients;
+      return this.$store.state.activeRecipe.recipe.ingredients;
     }
   },
   methods: {
@@ -45,4 +60,7 @@ export default {
 
 
 <style scoped>
+ul {
+  list-style-type: none;
+}
 </style>
