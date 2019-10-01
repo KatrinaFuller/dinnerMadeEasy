@@ -40,9 +40,12 @@ export default {
   computed: {},
   methods: {
     addNote() {
-      this.newNote.recipeId = this.$route.params.recipeId;
+      let payload = {
+        recipeId: this.$route.params.recipeId,
+        notes: this.newNote.notes
+      };
       debugger;
-      this.$store.dispatch("addNote", this.newNote);
+      this.$store.dispatch("addNote", payload);
       $(".close").click();
     }
   },
