@@ -1,13 +1,13 @@
 <template>
   <div class="recipe">
-    <div class="card mb-3" style="max-width: 540px;" @click="viewRecipe()">
+    <div class="card mb-3" style="max-width: 540px;">
       <div class="row no-gutters">
         <div class="col-md-4">
-          <img v-bind:src="`${recipe.image}`" class="card-img" alt="..." />
+          <img v-bind:src="`${recipe.image}`" class="card-img" alt="..." @click="viewRecipe()" />
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title inline">{{recipe.type}}-{{recipe.label}}</h5>
+            <h5 class="card-title inline" @click="viewRecipe()">{{recipe.type}}-{{recipe.label}}</h5>
             <span class="bg-light text-danger rounded px-1 ml-1 pb-1" @click="removeRecipe">x</span>
             <p class="card-text">Rating: {{recipe.rating}}</p>
           </div>
