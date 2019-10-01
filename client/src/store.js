@@ -107,7 +107,7 @@ export default new Vuex.Store({
 
     async addToFavorites({ commit, dispatch }, data) {
       try {
-        debugger
+        // debugger
         let res = await api.get(`/recipe/favRecipes`)
         commit('setFavRecipes', res.data)
 
@@ -161,22 +161,21 @@ export default new Vuex.Store({
       }
     },
 
-    async addIngredient({ commit, dispatch }, data) {
+    async getGroceries({ commit, dispatch }) {
       try {
         // debugger
-        let res = await api.post('/grocery', data)
-        dispatch('getGroceries')
-        console.log(this.state.groceries)
+        let res = await api.get('/grocery')
+        commit("setIngredients", res.data)
       } catch (error) {
         console.error(error)
       }
     },
 
-    async getGroceries({ commit, dispatch }) {
+    async addIngredient({ commit, dispatch }, data) {
       try {
-        debugger
-        let res = await api.get('/grocery')
-        commit("setIngredients", res.data)
+        let res = await api.post('/grocery', data)
+        dispatch('getGroceries')
+        console.log(this.state.groceries)
       } catch (error) {
         console.error(error)
       }
@@ -191,11 +190,10 @@ export default new Vuex.Store({
       }
     },
 
-    async toggleCompletedStatus({ commit }, data) {
+    async toggleCompletedStatus({ dispatch }, data) {
       try {
-        // debugger
-        let res = await api.put('/grocery/' + data._id)
-        commit('setIngredients')
+        let res = await api.put('/grocery/' + data._id, data)
+        dispatch('getGroceries')
 
       } catch (error) {
         console.error(error)

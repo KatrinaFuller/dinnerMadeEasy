@@ -19,7 +19,8 @@ export default class GroceryListController {
 
   async getAll(req, res, next) {
     try {
-      let data = await _groceryListService.find({})
+
+      let data = await _groceryListService.find({ userId: req.session.uid })
       return res.send(data)
     } catch (error) { next(error) }
 
