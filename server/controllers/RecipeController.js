@@ -106,8 +106,8 @@ export default class RecipeController {
     async createNotes(req, res, next) {
         req.body.userId = req.session.uid
         try {
-            let comment = await _recipeService.findOneAndUpdate({ _id: req.params.id, userId: req.session.uid }, { $push: { comments: req.body } }, { new: true })
-            res.send(comment)
+            let notes = await _recipeService.findOneAndUpdate({ _id: req.params.id, userId: req.session.uid }, { $push: { notes: req.body } }, { new: true })
+            res.send(notes)
         } catch (error) {
             next(error)
         }
@@ -159,6 +159,6 @@ function randomizeQueryAndGetMaxCount(query) {
     }
     let maxTo = Math.floor(Math.random() * (options[query]))
     //NOTE while api not working
-    maxTo = Math.floor(Math.random()*5900)
-    return { query, maxTo: maxTo > 100 ? maxTo : 100}
+    maxTo = Math.floor(Math.random() * 5900)
+    return { query, maxTo: maxTo > 100 ? maxTo : 100 }
 }

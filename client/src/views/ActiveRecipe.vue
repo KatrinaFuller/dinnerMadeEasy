@@ -35,7 +35,7 @@
           <div class="card-body">
             <h5 class="card-title">Notes:</h5>
             <ul class="card-text">
-              <li>First note</li>
+              <li v-for="note in recipe.notes" :key="note._id">{{note.notes}}</li>
             </ul>
             <addNoteModal />
             <button
