@@ -12,13 +12,39 @@
       <div class="col-12 text-center">
         <img v-bind:src="`${recipe.image}`" />
       </div>
-      <div class="col-12 text-center">
+      <div class="col-12">
+        <button class="btn btn-outline-info mx-1 text-white">
+          <a v-bind:href="`${recipe.url}`" target="_blank">Go To Recipe</a>
+        </button>
+      </div>
+      <div class="col-12 text-left">
         <h4>
           <b>Ingredients:</b>
         </h4>
         <ul>
-          <li v-for="ingredient in recipe.ingredients" :key="ingredient._id">{{ingredient.text}}</li>
+          <li v-for="ingredient in recipe.ingredients" :key="ingredient._id">
+            <span class="red-text" @click="addIngredient(ingredient)">+</span>
+            {{ingredient.text}}
+          </li>
         </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card w-100">
+          <div class="card-body">
+            <h5 class="card-title">Notes:</h5>
+            <ul class="card-text">
+              <li>First note</li>
+            </ul>
+            <addNoteModal />
+            <button
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#add-note-modal"
+            >Add Notes</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -27,6 +53,7 @@
 
 <script>
 // import router from "@/router.js";
+import addNoteModal from "../components/addNoteModal";
 
 export default {
   name: "activeRecipe",
@@ -52,9 +79,14 @@ export default {
   methods: {
     backToProfile() {
       this.$store.dispatch("backToProfile");
+    },
+    addIngredient(ingredient) {
+      ingredient.description = ingredient.text;
+      this.$store.dispatch("addIngredient", ingredient);
+      alert("added to grocery list");
     }
   },
-  components: {}
+  components: { addNoteModal }
 };
 </script>
 
@@ -62,5 +94,8 @@ export default {
 <style scoped>
 ul {
   list-style-type: none;
+}
+.red-text {
+  color: red;
 }
 </style>
