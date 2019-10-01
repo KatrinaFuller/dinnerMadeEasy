@@ -1,11 +1,12 @@
 <template>
-  <div class="container-fluid MoreFavorites">
+  <div class="container-fluid MoreToTry">
     <div class="row justify-content-start">
       <button class="btn btn-outline-primary" type="button" @click="backToProfile">Back to Profile</button>
     </div>
     <div class="row justify-content-center">
-      <h1>More of your favorite recipes</h1>
+      <h1>More of your recipes to try</h1>
     </div>
+
     <recipe v-for="recipe in recipes" :recipe="recipe" :key="recipe._id" />
   </div>
 </template>
@@ -15,17 +16,17 @@
 import router from "@/router.js";
 import recipe from "../components/recipe";
 export default {
-  name: "MoreFavorites",
+  name: "MoreToTry",
   data() {
     return {};
   },
   computed: {
     recipes() {
-      return this.$store.state.favoriteRecipes;
+      return this.$store.state.toTryRecipes;
     }
   },
   mounted() {
-    this.$store.dispatch("addToFavorites");
+    this.$store.dispatch("addToTryList");
   },
   methods: {
     backToProfile() {
@@ -38,4 +39,7 @@ export default {
 
 
 <style scoped>
+.MoreToTry {
+  flex-direction: row;
+}
 </style>

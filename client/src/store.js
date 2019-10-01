@@ -94,6 +94,9 @@ export default new Vuex.Store({
     MoreFavRecipes() {
       router.push({ name: "MoreFavRecipes" })
     },
+    MoreToTry() {
+      router.push({ name: "MoreToTry" })
+    },
     usernameButton() {
       router.push({ name: "profile" })
     },
@@ -124,8 +127,6 @@ export default new Vuex.Store({
         // debugger
         let res = await api.get(`/recipe?type=favorites`)
         commit('setFavRecipes', res.data)
-
-
       } catch (error) {
         console.error(error)
 
