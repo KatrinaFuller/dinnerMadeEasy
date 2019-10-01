@@ -107,7 +107,7 @@ export default new Vuex.Store({
 
     async addToFavorites({ commit, dispatch }, data) {
       try {
-        debugger
+        // debugger
         let res = await api.get(`/recipe/favRecipes`)
         commit('setFavRecipes', res.data)
 
@@ -174,7 +174,7 @@ export default new Vuex.Store({
 
     async getGroceries({ commit, dispatch }) {
       try {
-        debugger
+        // debugger
         let res = await api.get('/grocery')
         commit("setIngredients", res.data)
       } catch (error) {
