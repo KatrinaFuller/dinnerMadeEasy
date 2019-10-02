@@ -9,7 +9,8 @@
           <div class="card-body">
             <h5 class="card-title inline" @click="viewRecipe()">{{recipe.label}}</h5>
             <span class="bg-light text-danger rounded px-1 ml-1 pb-1" @click="removeRecipe">x</span>
-            <p class="card-text">Rating: {{recipe.rating}}</p>
+            <p class="card-text" v-if="recipe.type == 'toTry'"></p>
+            <p class="card-text" v-else>Rating: {{recipe.rating}}</p>
           </div>
         </div>
       </div>
