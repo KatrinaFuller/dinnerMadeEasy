@@ -3,7 +3,7 @@
     <nav class="navbar navbar-light bg-light">
       <form class="form-inline">
         <button class="btn btn-outline-primary" type="button" @click="backButton">Back</button>
-        <h3>{{user.name}}-Dashboard</h3>
+        <h3>{{user.name}}'s Dashboard</h3>
         <button class="btn btn-outline-primary" type="button" @click="logout">Logout</button>
       </form>
     </nav>
