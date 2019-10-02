@@ -16,10 +16,10 @@ export default class RecipeController {
         this.router = express.Router()
             //NOTE all routes after the authenticate method will require the user to be logged in to access
 
-            .get('', this.getAll)
             .get('/random', this.getRandomRecipes)
-            .get('/:id', this.getById)
             .use(Authorize.authenticated)
+            .get('', this.getAll)
+            .get('/:id', this.getById)
             .get('/favRecipes', this.getAllByUser)
             .get('/toTryRecipes', this.getAllByUser)
             .post('/favRecipes', this.createFavRecipes)

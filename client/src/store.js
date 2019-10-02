@@ -103,11 +103,11 @@ export default new Vuex.Store({
 
     async addRecipe({ dispatch }, data) {
       try {
-
         let res = await api.post('/recipe/favRecipes', data)
         dispatch('addToFavorites') //might need to change this name
         alert("added to Favorite List")
       } catch (e) {
+        alert("please login to continue")
         console.warn(e.message)
       }
     },
@@ -149,6 +149,7 @@ export default new Vuex.Store({
         dispatch('addToTryList')
         alert("added to recipes to try")
       } catch (e) {
+        alert("please login to continue")
         console.warn(e.message)
       }
     },
@@ -185,9 +186,19 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async addNote({ dispatch }, data) {
+      try {
+        // debugger
+        let res = await api.post(`/recipe/${data.recipeId}/notes`, data)
+        dispatch("getRecipeById", data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
 
     async getRecipeById({ commit }, payload) {
       try {
+        // debugger
         let res = await api.get(`/recipe/${payload.recipeId}`)
         commit("setActiveRecipe", res.data)
       } catch (error) {
