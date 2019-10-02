@@ -67,6 +67,7 @@
 // import router from "@/router.js";
 import addNoteModal from "../components/addNoteModal";
 import { StarRating } from "vue-rate-it";
+import Swal from "sweetalert2";
 
 export default {
   name: "activeRecipe",
@@ -98,7 +99,16 @@ export default {
     addIngredient(ingredient) {
       ingredient.description = ingredient.text;
       this.$store.dispatch("addIngredient", ingredient);
-      alert("added to grocery list");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000
+      });
+      Toast.fire({
+        type: "success",
+        title: "added to grocery list"
+      });
     },
 
     deleteNote(data) {

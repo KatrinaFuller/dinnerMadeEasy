@@ -1,5 +1,6 @@
 import AuthService from "../AuthService"
 import router from "../router"
+import Swal from "sweetalert2"
 
 export default {
   actions: {
@@ -10,6 +11,16 @@ export default {
         commit('setUser', user)
         router.push({ name: "home" })
       } catch (e) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        Toast.fire({
+          type: 'warning',
+          title: 'account already created'
+        })
         console.warn(e.message)
       }
     },
@@ -19,7 +30,16 @@ export default {
         commit('setUser', user)
         router.push({ name: "home" })
       } catch (e) {
-        alert("invalid login")
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        Toast.fire({
+          type: 'warning',
+          title: 'invalid login'
+        })
       }
     }
   }

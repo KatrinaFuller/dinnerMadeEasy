@@ -4,8 +4,7 @@ import Axios from 'axios'
 import router from './router'
 import AuthModule from './modules/AuthModule'
 import AuthService from "./AuthService"
-
-
+import Swal from "sweetalert2"
 Vue.use(Vuex)
 // let query = new random ([chicken, beef,]) this will be for randomly generating our query in the baseUrl
 // const _foodapi = Axios.create({
@@ -23,6 +22,7 @@ let api = Axios.create({
 })
 
 // const server = baseUrl: localhost 
+
 export default new Vuex.Store({
   modules: {
     AuthModule
@@ -105,9 +105,27 @@ export default new Vuex.Store({
       try {
         let res = await api.post('/recipe/favRecipes', data)
         dispatch('addToFavorites') //might need to change this name
-        alert("added to Favorite List")
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        Toast.fire({
+          type: 'success',
+          title: 'added recipe'
+        })
       } catch (e) {
-        alert("please login to continue")
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        Toast.fire({
+          type: 'warning',
+          title: 'please login to continue'
+        })
         console.warn(e.message)
       }
     },
@@ -147,9 +165,27 @@ export default new Vuex.Store({
         let res = await api.post('/recipe/toTryRecipes', data)
         console.log("got")
         dispatch('addToTryList')
-        alert("added to recipes to try")
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        Toast.fire({
+          type: 'success',
+          title: 'added recipe'
+        })
       } catch (e) {
-        alert("please login to continue")
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        Toast.fire({
+          type: 'warning',
+          title: 'please login to continue'
+        })
         console.warn(e.message)
       }
     },
