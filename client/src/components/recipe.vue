@@ -10,7 +10,17 @@
             <h5 class="card-title inline" @click="viewRecipe()">{{recipe.label}}</h5>
             <span class="bg-light text-danger rounded px-1 ml-1 pb-1" @click="removeRecipe">x</span>
             <p class="card-text" v-if="recipe.type == 'toTry'"></p>
-            <p class="card-text" v-else>Rating: {{recipe.rating}}</p>
+            <p class="card-text" v-else>
+              <star-rating
+                :item-size="20"
+                :item-small="true"
+                inactive-color="#000"
+                active-color="#ffd055"
+                :increment="0.5"
+                v-model="recipe.ratings"
+                @rating-selected="setRating"
+              ></star-rating>
+            </p>
           </div>
         </div>
       </div>
@@ -20,6 +30,8 @@
 
 
 <script>
+import { StarRating } from "vue-rate-it";
+
 export default {
   name: "recipe",
   props: ["recipe"],
@@ -36,9 +48,16 @@ export default {
         name: "activeRecipe",
         params: { recipeId: this.recipe._id, recipeType: this.recipe.type }
       });
+    },
+    setRating(rating) {
+      let payload = {
+        _id: this.recipe._id,
+        ratings: rating
+      };
+      this.$store.dispatch("setRating", payload);
     }
   },
-  components: {}
+  components: { StarRating }
 };
 </script>
 

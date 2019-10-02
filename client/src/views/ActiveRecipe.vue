@@ -18,7 +18,8 @@
           inactive-color="#000"
           active-color="#ffd055"
           :increment="0.5"
-          v-model="rating"
+          v-model="recipe.ratings"
+          @rating-selected="setRating"
         ></star-rating>
       </div>
       <div class="col-12">
@@ -78,7 +79,7 @@ export default {
   },
   mounted() {
     let payload = {
-      recipeId: this.$route.params.recipeId,
+      _id: this.$route.params.recipeId,
       recipeType: this.$route.params.recipeType
     };
     this.$store.dispatch("getRecipeById", payload);
@@ -102,9 +103,16 @@ export default {
     },
 
     deleteNote(data) {
-      debugger;
       data.recipeId = this.$route.params.recipeId;
       this.$store.dispatch("deleteNote", data);
+    },
+    setRating(rating) {
+      let payload = {
+        _id: this.$route.params.recipeId,
+        ratings: rating
+      };
+      debugger;
+      this.$store.dispatch("setRating", payload);
     }
   },
   components: { addNoteModal, StarRating }

@@ -190,8 +190,7 @@ export default new Vuex.Store({
 
     async getRecipeById({ commit }, payload) {
       try {
-        // debugger
-        let res = await api.get(`/recipe/${payload.recipeId}`)
+        let res = await api.get(`/recipe/${payload._id}`)
         commit("setActiveRecipe", res.data)
       } catch (error) {
         console.error(error)
@@ -244,7 +243,16 @@ export default new Vuex.Store({
         console.error(error)
 
       }
-    }
+    },
+
+    async setRating({ dispatch }, data) {
+      try {
+        let res = await api.put(`/recipe/${data._id}`, data)
+        dispatch('getRecipeById', data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
   }
 })
 
