@@ -13,6 +13,15 @@
         <img v-bind:src="`${recipe.image}`" />
       </div>
       <div class="col-12">
+        <star-rating
+          :item-size="30"
+          inactive-color="#000"
+          active-color="#ffd055"
+          :increment="0.5"
+          v-model="rating"
+        ></star-rating>
+      </div>
+      <div class="col-12">
         <button class="btn btn-outline-info mx-1 text-white">
           <a v-bind:href="`${recipe.url}`" target="_blank">Go To Recipe</a>
         </button>
@@ -54,12 +63,15 @@
 <script>
 // import router from "@/router.js";
 import addNoteModal from "../components/addNoteModal";
+import { StarRating } from "vue-rate-it";
 
 export default {
   name: "activeRecipe",
   // props: ["recipe"],
   data() {
-    return {};
+    return {
+      rating: 0
+    };
   },
   mounted() {
     let payload = {
@@ -86,7 +98,7 @@ export default {
       alert("added to grocery list");
     }
   },
-  components: { addNoteModal }
+  components: { addNoteModal, StarRating }
 };
 </script>
 

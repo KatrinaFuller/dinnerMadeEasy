@@ -67,4 +67,7 @@ export default {
 .text-red {
   color: red;
 }
+ul {
+  list-style-type: none;
+}
 </style>
