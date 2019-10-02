@@ -1,12 +1,14 @@
 <template>
-  <div class="profileNavBar">
-    <nav class="navbar navbar-light bg-light">
-      <form class="form-inline">
-        <button class="btn btn-outline-primary" type="button" @click="backButton">Back</button>
-        <h3>{{user.name}}'s Dashboard</h3>
-        <button class="btn btn-outline-primary" type="button" @click="logout">Logout</button>
-      </form>
-    </nav>
+  <div class="row sticky-top">
+    <div class="col-12">
+      <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+          <button class="btn btn-outline-primary" type="button" @click="backButton">Back</button>
+          <h3>{{user.name}}'s Dashboard</h3>
+          <button class="btn btn-outline-primary" type="button" @click="logout">Logout</button>
+        </form>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -38,10 +40,13 @@ export default {
 
 
 <style scoped>
-.profileNavBar {
+/* .profileNavBar {
   display: contents;
-}
+} */
 .form-inline {
   display: contents;
+}
+.sticky-top {
+  position: sticky;
 }
 </style>
