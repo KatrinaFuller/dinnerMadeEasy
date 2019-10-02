@@ -35,7 +35,10 @@
           <div class="card-body">
             <h5 class="card-title">Notes:</h5>
             <ul class="card-text">
-              <li v-for="note in recipe.notes" :key="note._id">{{note.notes}}</li>
+              <li v-for="note in recipe.notes" :key="note._id">
+                {{note.notes}}
+                <span class="red-text" @click="deleteNote(note)">x</span>
+              </li>
             </ul>
             <addNoteModal />
             <button
@@ -84,6 +87,12 @@ export default {
       ingredient.description = ingredient.text;
       this.$store.dispatch("addIngredient", ingredient);
       alert("added to grocery list");
+    },
+
+    deleteNote(data) {
+      debugger;
+      data.recipeId = this.$route.params.recipeId;
+      this.$store.dispatch("deleteNote", data);
     }
   },
   components: { addNoteModal }
@@ -97,5 +106,6 @@ ul {
 }
 .red-text {
   color: red;
+  cursor: pointer;
 }
 </style>
