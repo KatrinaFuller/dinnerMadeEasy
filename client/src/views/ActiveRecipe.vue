@@ -40,6 +40,17 @@
         </ul>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="card w-100">
+          <div class="card-body">
+            <h5 class="card-title">Directions:</h5>
+            <p class="card-text">{{recipe.directions}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col">
         <div class="card w-100">

@@ -51,7 +51,7 @@
                 v-model="newRecipe.image"
               />
             </div>
-            <h6>Tag Your Recipe</h6>
+            <!-- <h6>Tag Your Recipe</h6>
             <div class="form-check">
               <input
                 class="form-check-input"
@@ -81,6 +81,16 @@
                 v-model="newRecipe.tags"
               />
               <label class="form-check-label" for="dinner">Dinner</label>
+            </div>-->
+            <div class="form-group">
+              <label for="directions">Directions:</label>
+              <textarea
+                class="form-control"
+                id="directions"
+                rows="3"
+                placeholder="Enter your recipe directions"
+                v-model="newRecipe.directions"
+              ></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
