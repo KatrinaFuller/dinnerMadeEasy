@@ -26,6 +26,7 @@
         <button class="btn btn-outline-info mx-1 text-white">
           <a v-bind:href="`${recipe.url}`" target="_blank">Go To Recipe</a>
         </button>
+        <button class="btn btn-outline-info" @click="moveToFavorites">Move to Favorite's list</button>
       </div>
       <div class="col-12 text-left">
         <h4>
@@ -110,6 +111,12 @@ export default {
         type: "success",
         title: "added to grocery list"
       });
+    },
+    moveToFavorites() {
+      debugger;
+
+      // this.$store.dispatch("addToFavorites", this.recipe);
+      this.$store.dispatch("moveToFavorites", this.recipe);
     },
 
     deleteNote(data) {

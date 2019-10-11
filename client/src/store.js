@@ -289,6 +289,16 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async moveToFavorites({ dispatch }, data) {
+      try {
+        debugger
+        let res = await api.put(`/recipe/${data}`, data)
+        dispatch('addToFavorites')
+      } catch (error) {
+        console.error(error)
+
+      }
+    }
   }
 })
 
