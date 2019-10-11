@@ -28,7 +28,7 @@
     <div class="randomRecipeButton pt-4">
       <button type="button" class="btn btn-primary btn-lg" @click="generate">Generate Recipe</button>
       <div class="row justify-content-center pt-4">
-        <div class="card" style="width: 30rem;" v-if="recipe">
+        <div class="card shadow" style="width: 30rem;" v-if="recipe">
           <h1>{{recipe.label}}</h1>
           <img alt="Card image cap" v-bind:src="`${recipe.image}`" />
           <div class="card-body">
