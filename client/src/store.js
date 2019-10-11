@@ -297,6 +297,12 @@ export default new Vuex.Store({
 
     //   }
     // }
+    async moveRecipe({ commit, dispatch }, recipe) {
+      try {
+        let res = await api.put(`recipe/${recipe._id}`, recipe)
+      } catch (error) { console.error(MediaStreamError) }
+    }
+
   }
 })
 
