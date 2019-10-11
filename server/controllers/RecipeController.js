@@ -136,11 +136,11 @@ export default class RecipeController {
 
     async deleteNotes(req, res, next) {
         try {
-            let note = await _recipeService.findOneAndUpdate({ _id: req.body._id, userId: req.session.uid }, { $pull: { notes: req.body } }, { new: true })
-            if (note) {
-                return res.send(note)
-            }
-            throw new Error("Invalid Id")
+            let note = await _recipeService.findOneAndUpdate({ _id: req.body.recipeId, userId: req.session.uid }, { $pull: { notes: req.body } }, { new: true })
+            // if (note) {
+            return res.send(note)
+            // }
+            // throw new Error("Invalid Id")
         } catch (error) {
             next(error)
         }

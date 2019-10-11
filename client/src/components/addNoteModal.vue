@@ -41,9 +41,10 @@ export default {
   methods: {
     addNote() {
       let payload = {
-        _id: this.$route.params.recipeId,
+        recipeId: this.$route.params.recipeId,
         notes: this.newNote.notes
       };
+      debugger;
       this.$store.dispatch("addNote", payload);
       $(".close").click();
     }

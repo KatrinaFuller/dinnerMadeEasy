@@ -26,7 +26,7 @@
         <button class="btn btn-outline-info mx-1 text-white">
           <a v-bind:href="`${recipe.url}`" target="_blank">Go To Recipe</a>
         </button>
-        <button class="btn btn-outline-info" @click="moveToFavorites">Move to Favorite's list</button>
+        <!-- <button class="btn btn-outline-info" @click="moveToFavorites">Move to Favorite's list</button> -->
       </div>
       <div class="col-12 text-left">
         <h4>
@@ -112,26 +112,30 @@ export default {
         title: "added to grocery list"
       });
     },
-    moveToFavorites() {
-      debugger;
+    // moveToFavorites() {
+    //   debugger;
 
-      // this.$store.dispatch("addToFavorites", this.recipe);
-      this.$store.dispatch("moveToFavorites", this.recipe);
-    },
+    //   // this.$store.dispatch("addToFavorites", this.recipe);
+    //   this.$store.dispatch("moveToFavorites", this.recipe);
+    // },
 
     deleteNote(data) {
-      // _id = this.$route.params.recipeId;
+      // data._id = this.$route.params.recipeId;
+      data.recipeId = this.$route.params.recipeId;
+      // debugger;
       this.$store.dispatch("deleteNote", data);
     },
+
     setRating(rating) {
       let payload = {
         _id: this.$route.params.recipeId,
         ratings: rating
       };
-      debugger;
+      // debugger;
       this.$store.dispatch("setRating", payload);
     }
   },
+
   components: { addNoteModal, StarRating }
 };
 </script>

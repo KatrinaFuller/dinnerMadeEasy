@@ -132,8 +132,9 @@ export default new Vuex.Store({
 
     async addNote({ dispatch }, data) {
       try {
-        // debugger
-        let res = await api.post(`/recipe/${data._id}/notes`, data)
+        debugger
+        let res = await api.post(`/recipe/${data.recipeId}/notes`, data)
+        data._id = data.recipeId
         dispatch("getRecipeById", data)
       } catch (error) {
         console.error(error)
@@ -143,7 +144,9 @@ export default new Vuex.Store({
     async deleteNote({ dispatch }, data) {
       try {
         // debugger
-        let res = await api.put(`/recipe/${data._id}/notes`, data)
+        let res = await api.put(`/recipe/${data.recipeId}/notes`, data)
+        data._id = data.recipeId
+        // debugger
         dispatch('getRecipeById', data)
       } catch (error) {
         console.error(error)
@@ -226,7 +229,8 @@ export default new Vuex.Store({
 
     async getRecipeById({ commit }, payload) {
       try {
-        let res = await api.get(`/recipe/${payload._id}`)
+        // debugger
+        let res = await api.get(`/recipe/${payload._id}`, payload)
         commit("setActiveRecipe", res.data)
       } catch (error) {
         console.error(error)
@@ -289,16 +293,16 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async moveToFavorites({ dispatch }, data) {
-      try {
-        debugger
-        let res = await api.put(`/recipe/${data}`, data)
-        dispatch('addToFavorites')
-      } catch (error) {
-        console.error(error)
+    // async moveToFavorites({ dispatch }, data) {
+    //   try {
+    //     debugger
+    //     let res = await api.put(`/recipe/${data}`, data)
+    //     dispatch('addToFavorites')
+    //   } catch (error) {
+    //     console.error(error)
 
-      }
-    }
+    //   }
+    // }
   }
 })
 
