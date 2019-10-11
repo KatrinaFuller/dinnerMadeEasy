@@ -162,4 +162,7 @@ ul {
   color: red;
   cursor: pointer;
 }
+img {
+  min-height: 200vh;
+}
 </style>

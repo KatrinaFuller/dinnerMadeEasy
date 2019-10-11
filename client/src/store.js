@@ -132,7 +132,6 @@ export default new Vuex.Store({
 
     async addNote({ dispatch }, data) {
       try {
-        debugger
         let res = await api.post(`/recipe/${data.recipeId}/notes`, data)
         data._id = data.recipeId
         dispatch("getRecipeById", data)
@@ -143,10 +142,8 @@ export default new Vuex.Store({
 
     async deleteNote({ dispatch }, data) {
       try {
-        // debugger
         let res = await api.put(`/recipe/${data.recipeId}/notes`, data)
         data._id = data.recipeId
-        // debugger
         dispatch('getRecipeById', data)
       } catch (error) {
         console.error(error)
@@ -155,7 +152,6 @@ export default new Vuex.Store({
 
     async addToFavorites({ commit, dispatch }, data) {
       try {
-        // debugger
         let res = await api.get(`/recipe?type=favorites`)
         commit('setFavRecipes', res.data)
       } catch (error) {
@@ -248,7 +244,6 @@ export default new Vuex.Store({
 
     async getGroceries({ commit, dispatch }) {
       try {
-        // debugger
         let res = await api.get('/grocery')
         commit("setIngredients", res.data)
       } catch (error) {
