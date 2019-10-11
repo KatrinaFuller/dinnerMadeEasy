@@ -46,6 +46,7 @@ export default {
       };
       this.$store.dispatch("addNote", payload);
       $(".close").click();
+      this.newNote = {};
     }
   },
   components: {}
