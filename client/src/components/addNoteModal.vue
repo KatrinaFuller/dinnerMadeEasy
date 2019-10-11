@@ -47,6 +47,7 @@ export default {
       debugger;
       this.$store.dispatch("addNote", payload);
       $(".close").click();
+      // this.newNote = {};
     }
   },
   components: {}

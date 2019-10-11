@@ -8,14 +8,19 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-4">
+        <div class="offset-1 col-4">
           <addRecipeModal />
-          <h3>Your Favorite Recipes</h3>
-          <button
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#add-recipe-modal"
-          >Add Recipe</button>
+          <h3>
+            Your Favorite Recipes
+            <!-- <span
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#add-recipe-modal"
+            >-->
+            <i class="far fa-plus-square" data-toggle="modal" data-target="#add-recipe-modal"></i>
+            <!-- </span> -->
+          </h3>
+
           <favList />
           <button
             class="btn btn-outline-primary"
@@ -23,7 +28,7 @@
             @click="MoreFavRecipes"
           >More Favorite Recipes</button>
         </div>
-        <div class="col-4 offset-3">
+        <div class="col-4 offset-2">
           <h3>More Recipes to Try</h3>
           <toTryList />
           <button

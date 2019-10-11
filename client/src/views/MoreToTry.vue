@@ -6,8 +6,9 @@
     <div class="row justify-content-center">
       <h1>More of your recipes to try</h1>
     </div>
-
-    <recipe v-for="recipe in recipes" :recipe="recipe" :key="recipe._id" />
+    <div class="row">
+      <recipe class="col-3" v-for="recipe in recipes" :recipe="recipe" :key="recipe._id" />
+    </div>
   </div>
 </template>
 

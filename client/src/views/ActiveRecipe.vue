@@ -96,7 +96,9 @@ export default {
       recipeType: this.$route.params.recipeType
     };
     this.$store.dispatch("getRecipeById", payload);
-  },
+
+    //pull from URL here 
+    },
   computed: {
     recipe() {
       return this.$store.state.activeRecipe;
@@ -159,5 +161,8 @@ ul {
 .red-text {
   color: red;
   cursor: pointer;
+}
+img {
+  min-height: 50vh;
 }
 </style>

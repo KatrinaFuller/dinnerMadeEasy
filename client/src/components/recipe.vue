@@ -1,6 +1,6 @@
 <template>
   <div class="recipe">
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3 shadow" style="max-width: 540px;">
       <div class="row no-gutters">
         <div class="col-md-4">
           <img v-bind:src="`${recipe.image}`" class="card-img" alt="..." @click="viewRecipe()" />
