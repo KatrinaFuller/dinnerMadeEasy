@@ -12,7 +12,7 @@
       <div class="col-12 text-center">
         <img v-bind:src="`${recipe.image}`" />
       </div>
-      <div class="col-2 text-center border">
+      <div class="col-12 d-flex justify-content-center my-3">
         <star-rating
           :item-size="30"
           inactive-color="#000"
