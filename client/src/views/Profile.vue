@@ -8,31 +8,35 @@
         </div>
       </div>
       <div class="row">
-        <div class="offset-1 col-4">
+        <div class="offset-1 col-4 mt-4">
           <addRecipeModal />
-          <h3>
+          <h3 class="mb-4">
             Your Favorite Recipes
             <!-- <span
               class="btn btn-primary"
               data-toggle="modal"
               data-target="#add-recipe-modal"
             >-->
-            <i class="far fa-plus-square" data-toggle="modal" data-target="#add-recipe-modal"></i>
+            <i
+              class="far fa-plus-square pointer"
+              data-toggle="modal"
+              data-target="#add-recipe-modal"
+            ></i>
             <!-- </span> -->
           </h3>
 
           <favList />
           <button
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary mb-5 mt-3"
             type="button"
             @click="MoreFavRecipes"
           >More Favorite Recipes</button>
         </div>
-        <div class="col-4 offset-2">
-          <h3>More Recipes to Try</h3>
+        <div class="col-4 offset-2 mt-4">
+          <h3 class="mb-4">More Recipes to Try</h3>
           <toTryList />
           <button
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary mb-5 mt-3"
             type="button"
             @click="MoreToTry"
           >More Recipes To Try</button>
@@ -78,4 +82,11 @@ export default {
 
 
 <style scoped>
+.pointer:hover {
+  transform: scale(0.9, 0.9);
+  cursor: pointer;
+}
+h3 {
+  font-family: "Asap", sans-serif;
+}
 </style>

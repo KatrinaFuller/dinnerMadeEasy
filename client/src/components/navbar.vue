@@ -70,6 +70,7 @@ export default {
 <style scoped>
 .navbar1 {
   display: contents;
+  padding: 0.9rem 1rem;
 }
 .form-inline {
   display: contents;

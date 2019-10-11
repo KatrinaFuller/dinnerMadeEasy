@@ -7,12 +7,12 @@
     </div>
     <div class="row" v-if="recipe">
       <div class="col-12">
-        <h1>{{recipe.label}}</h1>
+        <h1 class="mt-3 mb-3">{{recipe.label}}</h1>
       </div>
       <div class="col-12 text-center">
         <img v-bind:src="`${recipe.image}`" />
       </div>
-      <div class="col-12">
+      <div class="col-2 text-center border">
         <star-rating
           :item-size="30"
           inactive-color="#000"
@@ -97,8 +97,8 @@ export default {
     };
     this.$store.dispatch("getRecipeById", payload);
 
-    //pull from URL here 
-    },
+    //pull from URL here
+  },
   computed: {
     recipe() {
       return this.$store.state.activeRecipe;
