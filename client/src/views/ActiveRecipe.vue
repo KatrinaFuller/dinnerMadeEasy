@@ -163,6 +163,6 @@ ul {
   cursor: pointer;
 }
 img {
-  min-height: 200vh;
+  min-height: 50vh;
 }
 </style>
