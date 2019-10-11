@@ -52,7 +52,7 @@ export default new Router({
 
     },
     {
-      path: '/activeRecipe',
+      path: '/recipes/:recipeId',
       name: 'activeRecipe',
       component: function () {
         return import(/* webpackChunkName: "activeRecipe" */ './views/ActiveRecipe.vue')

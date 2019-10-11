@@ -229,7 +229,6 @@ export default new Vuex.Store({
 
     async getRecipeById({ commit }, payload) {
       try {
-        // debugger
         let res = await api.get(`/recipe/${payload._id}`, payload)
         commit("setActiveRecipe", res.data)
       } catch (error) {
