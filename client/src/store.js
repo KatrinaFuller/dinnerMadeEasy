@@ -132,8 +132,8 @@ export default new Vuex.Store({
 
     async addNote({ dispatch }, data) {
       try {
-        // debugger
-        let res = await api.post(`/recipe/${data._id}/notes`, data)
+        let res = await api.post(`/recipe/${data.recipeId}/notes`, data)
+        data._id = data.recipeId
         dispatch("getRecipeById", data)
       } catch (error) {
         console.error(error)
@@ -142,8 +142,8 @@ export default new Vuex.Store({
 
     async deleteNote({ dispatch }, data) {
       try {
-        // debugger
-        let res = await api.put(`/recipe/${data._id}/notes`, data)
+        let res = await api.put(`/recipe/${data.recipeId}/notes`, data)
+        data._id = data.recipeId
         dispatch('getRecipeById', data)
       } catch (error) {
         console.error(error)
@@ -152,7 +152,6 @@ export default new Vuex.Store({
 
     async addToFavorites({ commit, dispatch }, data) {
       try {
-        // debugger
         let res = await api.get(`/recipe?type=favorites`)
         commit('setFavRecipes', res.data)
       } catch (error) {
@@ -226,7 +225,7 @@ export default new Vuex.Store({
 
     async getRecipeById({ commit }, payload) {
       try {
-        let res = await api.get(`/recipe/${payload._id}`)
+        let res = await api.get(`/recipe/${payload._id}`, payload)
         commit("setActiveRecipe", res.data)
       } catch (error) {
         console.error(error)
@@ -245,7 +244,6 @@ export default new Vuex.Store({
 
     async getGroceries({ commit, dispatch }) {
       try {
-        // debugger
         let res = await api.get('/grocery')
         commit("setIngredients", res.data)
       } catch (error) {
@@ -289,16 +287,16 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async moveToFavorites({ dispatch }, data) {
-      try {
-        debugger
-        let res = await api.put(`/recipe/${data}`, data)
-        dispatch('addToFavorites')
-      } catch (error) {
-        console.error(error)
+    // async moveToFavorites({ dispatch }, data) {
+    //   try {
+    //     debugger
+    //     let res = await api.put(`/recipe/${data}`, data)
+    //     dispatch('addToFavorites')
+    //   } catch (error) {
+    //     console.error(error)
 
-      }
-    }
+    //   }
+    // }
   }
 })
 

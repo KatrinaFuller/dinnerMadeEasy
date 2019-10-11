@@ -69,6 +69,7 @@ export default {
 <style scoped>
 .text-red {
   color: red;
+  cursor: pointer;
 }
 ul {
   list-style-type: none;
