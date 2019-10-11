@@ -136,7 +136,7 @@ export default class RecipeController {
 
     async deleteNotes(req, res, next) {
         try {
-            let note = await _recipeService.findOneAndUpdate({ _id: req.body.recipeId, userId: req.session.uid }, { $pull: { notes: req.body } }, { new: true })
+            let note = await _recipeService.findOneAndUpdate({ _id: req.body._id, userId: req.session.uid }, { $pull: { notes: req.body } }, { new: true })
             if (note) {
                 return res.send(note)
             }

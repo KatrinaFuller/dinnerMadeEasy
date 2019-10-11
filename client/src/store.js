@@ -132,8 +132,8 @@ export default new Vuex.Store({
 
     async addNote({ dispatch }, data) {
       try {
-        debugger
-        let res = await api.post(`/recipe/${data.recipeId}/notes`, data)
+        // debugger
+        let res = await api.post(`/recipe/${data._id}/notes`, data)
         dispatch("getRecipeById", data)
       } catch (error) {
         console.error(error)
@@ -142,8 +142,8 @@ export default new Vuex.Store({
 
     async deleteNote({ dispatch }, data) {
       try {
-        debugger
-        let res = await api.put(`/recipe/${data.recipeId}/notes`, data)
+        // debugger
+        let res = await api.put(`/recipe/${data._id}/notes`, data)
         dispatch('getRecipeById', data)
       } catch (error) {
         console.error(error)

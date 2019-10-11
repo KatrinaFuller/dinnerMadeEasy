@@ -120,7 +120,7 @@ export default {
     },
 
     deleteNote(data) {
-      data.recipeId = this.$route.params.recipeId;
+      // _id = this.$route.params.recipeId;
       this.$store.dispatch("deleteNote", data);
     },
     setRating(rating) {

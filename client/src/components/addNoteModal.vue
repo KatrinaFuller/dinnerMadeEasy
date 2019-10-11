@@ -41,7 +41,7 @@ export default {
   methods: {
     addNote() {
       let payload = {
-        recipeId: this.$route.params.recipeId,
+        _id: this.$route.params.recipeId,
         notes: this.newNote.notes
       };
       this.$store.dispatch("addNote", payload);
