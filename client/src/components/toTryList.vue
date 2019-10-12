@@ -1,13 +1,17 @@
 <template>
   <div class="toTryList">
-    <draggable v-model="recipes" class="list-group" group="recipes" @add="onAdd">
-      <recipe
-        class="list-group-recipe recipe"
-        v-for="recipe in recipes"
-        :recipe="recipe"
+    <div class="list-group" dropzone="recipes" @dragover.prevent="()=>{}" @drop="onAdd">
+      <div class="p-3 card" v-if="!recipes.length">Drag Recipe to Try</div>
+      <div
+        v-for="(recipe, i) in recipes"
         :key="recipe._id"
-      />
-    </draggable>
+        @dragstart="setRecipe(recipe, i)"
+        @dragend="removeRecipe(i)"
+        draggable="true"
+      >
+        <recipe :recipe="recipe" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,18 +25,12 @@ export default {
     return {};
   },
   computed: {
-    recipesOLD() {
-      return this.$store.state.toTryRecipes.slice(0, 5);
-    },
+    // recipesOLD() {
+    //   return this.$store.state.toTryRecipes.slice(0, 5);
+    // },
 
-    recipes: {
-      get() {
-        return this.$store.state.toTryRecipes.slice(0, 5);
-      },
-      set(value) {
-        let data = { recipeId: this.recipe._id, tasks: value };
-        this.$store.commit("setFavRecipes");
-      }
+    recipes() {
+      return this.$store.state.toTryRecipes.slice(0, 5);
     }
   },
   mounted() {
@@ -40,13 +38,25 @@ export default {
   },
   methods: {
     onAdd(evt) {
-      debugger;
-      // let currentListId = this.listProp._id; //targetlist
-      let newIndex = evt.newDraggableIndex;
-      let recipe = this.$store.state.recipe[RecipeId][newIndex];
-      recipe.type = "favorite";
-      debugger;
-      this.$store.dispatch("moveRecipe", recipe);
+      if (!window.MOVING) {
+        return;
+      }
+      let newtoTry = JSON.parse(JSON.stringify(window.MOVING));
+      window.MOVING = undefined;
+      newtoTry.type = "toTry";
+      this.$store.dispatch("moveRecipe", newtoTry);
+    },
+
+    setRecipe(r, i) {
+      window.MOVING = r;
+      // this.$store.dispatch("moveRecipe", newFavorite);
+      // window.localStorage.setItem("MOVING", json.stringify(r));
+      // debugger;
+      // event.dataTransfer.setData("text/plain", JSON.stringify(r));
+    },
+
+    removeRecipe(i) {
+      this.recipes.splice(i, 1);
     }
   },
   components: { recipe, draggable }
