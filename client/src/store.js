@@ -139,7 +139,26 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-
+    async addDirections({ dispatch }, data) {
+      try {
+        debugger
+        let res = await api.post(`/recipe/${data.recipeId}/directions`, data)
+        data._id = data.recipeId
+        dispatch("getRecipeById", data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async deleteDirection({ dispatch }, data) {
+      try {
+        debugger
+        let res = await api.delete(`/recipe/${data.recipeId}/directions`, data.directions)
+        data._id = data.recipeId
+        dispatch('getRecipeById', data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async deleteNote({ dispatch }, data) {
       try {
         let res = await api.put(`/recipe/${data.recipeId}/notes`, data)
