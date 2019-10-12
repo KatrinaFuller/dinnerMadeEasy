@@ -48,23 +48,23 @@ self.__precacheManifest = [
     "url": "/img/dmelogo.e68538e5.png"
   },
   {
-    "revision": "376afabef4884cbf51ad9d47aa1cf917",
+    "revision": "3f475060f80001377e0b0608e4630107",
     "url": "/index.html"
-  },
-  {
-    "revision": "3ca86cf4ce2cabfa2f2ddba749ad15f1",
-    "url": "/tsmchefs.ico"
   },
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
     "url": "/robots.txt"
   },
   {
-    "revision": "192b46b288bc5b361710623a38c8de03",
-    "url": "/tsmchefs.png"
+    "revision": "3ca86cf4ce2cabfa2f2ddba749ad15f1",
+    "url": "/tsmchefs.ico"
   },
   {
     "revision": "f194429eeb5d74f7389a3f3631b1b192",
     "url": "/whiteSmChefs.png"
+  },
+  {
+    "revision": "192b46b288bc5b361710623a38c8de03",
+    "url": "/tsmchefs.png"
   }
 ];

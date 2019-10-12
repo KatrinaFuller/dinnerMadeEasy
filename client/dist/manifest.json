@@ -1,6 +1,6 @@
 {
-  "name": "client",
-  "short_name": "client",
+  "name": "Dinner Made Easy",
+  "short_name": "Dinner Made Easy",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
