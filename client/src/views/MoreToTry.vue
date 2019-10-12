@@ -8,6 +8,8 @@
     </div>
     <div class="row">
       <recipe class="col-3" v-for="recipe in recipes" :recipe="recipe" :key="recipe._id" />
+      button class="btn btn-outline-primary" type="button" @click="backToProfile">Back to Profile</button>
+
     </div>
   </div>
 </template>

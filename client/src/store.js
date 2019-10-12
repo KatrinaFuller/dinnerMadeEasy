@@ -327,9 +327,7 @@ export default new Vuex.Store({
           let res = await api.put(`recipe/${recipe._id}`, recipe);
           commit("addFavRecipe", recipe)
           commit("removeTry", recipe)
-          // dispatch('addToFavorites')
         } else {
-          // commit("removeFav", recipe)
           let res = await api.put(`recipe/${recipe._id}`, recipe);
           commit("addToTryRecipe", recipe)
           commit("removeFav", recipe)
