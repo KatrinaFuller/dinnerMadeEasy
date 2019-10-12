@@ -3,7 +3,7 @@
     <h3 class="mt-2">Grocery List:</h3>
     <div class="groceryList row justify-content-center">
       <div class="col-3 border white shadow mt-2 text-left">
-        <ul>
+        <ul class="mt-3">
           <li v-for="grocery in groceries" :key="grocery._id">
             <input
               type="checkbox"
