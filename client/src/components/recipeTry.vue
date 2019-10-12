@@ -1,5 +1,5 @@
 <template>
-  <div class="recipe">
+  <div class="recipeTry">
     <div class="card mb-3 shadow" style="max-width: 540px;">
       <div class="row no-gutters">
         <div class="col-md-4">
@@ -9,17 +9,11 @@
           <div class="card-body">
             <h5 class="card-title inline" @click="viewRecipe()">{{recipe.label}}</h5>
             <span class="bg-light text-danger rounded px-1 ml-1 pb-1" @click="removeRecipe">x</span>
-            <p class="card-text" v-if="recipe.type != 'toTry'">
-              <star-rating
-                :item-size="20"
-                :item-small="true"
-                inactive-color="#000"
-                active-color="#ffd055"
-                :increment="0.5"
-                v-model="recipe.ratings"
-                @rating-selected="setRating"
-              ></star-rating>
-            </p>
+            <button
+              class="btn btn-outline-primary btn-sm"
+              type="button"
+              @click="moveToFav()"
+            >Move to Favorites</button>
           </div>
         </div>
       </div>
@@ -32,7 +26,7 @@
 import { StarRating } from "vue-rate-it";
 
 export default {
-  name: "rec",
+  name: "recTry",
   props: ["recipe"],
   data() {
     return {};
@@ -54,6 +48,10 @@ export default {
         ratings: rating
       };
       this.$store.dispatch("setRating", payload);
+    },
+    moveToFav() {
+      this.recipe.type = "favorites";
+      this.$store.dispatch("moveRecipe", this.recipe);
     }
   },
   components: { StarRating }
