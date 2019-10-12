@@ -43,7 +43,7 @@
 
     <div class="row">
       <div class="col">
-        <div class="card w-100">
+        <div class="card w-100 shadow mt-3">
           <div class="card-body">
             <h5 class="card-title">Directions:</h5>
             <ul class="card-text">
@@ -61,7 +61,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <div class="card w-100">
+        <div class="card w-100 shadow mb-5 mt-4">
           <div class="card-body">
             <h5 class="card-title">Notes:</h5>
             <ul class="card-text">

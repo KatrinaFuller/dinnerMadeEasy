@@ -26,7 +26,7 @@
       </select>
     </div>
     <div class="randomRecipeButton pt-4">
-      <button type="button" class="btn btn-primary btn-lg" @click="generate">Generate Recipe</button>
+      <button type="button" class="btn btn-lg" @click="generate">Generate Recipe</button>
       <div class="row justify-content-center pt-4">
         <div class="card shadow" style="width: 30rem;" v-if="recipe">
           <h1>{{recipe.label}}</h1>
@@ -40,9 +40,9 @@
               v-for="ingredient in recipe.ingredients"
               :key="ingredient._id"
             >{{ingredient.text}}</p>
-            <button class="btn btn-primary mx-1" @click="addToFavorites()">Add to My Favorites</button>
-            <button class="btn btn-primary mx-1" @click="addToTry()">Recipe to try</button>
-            <button class="btn btn-outline-info mx-1 text-white">
+            <button class="btn mx-1" @click="addToFavorites()">Add to My Favorites</button>
+            <button class="btn mx-1" @click="addToTry()">Recipe to try</button>
+            <button class="btn mx-1">
               <a v-bind:href="`${recipe.url}`" target="_blank">Go To Recipe</a>
             </button>
           </div>
@@ -107,5 +107,13 @@ export default {
 <style scoped>
 .dropdown {
   width: 20vw;
+}
+.btn {
+  background-color: #4bbcbc;
+  color: black;
+}
+a {
+  color: black;
+  text-decoration: underline;
 }
 </style>

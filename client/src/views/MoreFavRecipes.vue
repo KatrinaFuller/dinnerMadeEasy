@@ -1,10 +1,10 @@
 <template>
-  <div class="container-fluid MoreFavorites">
+  <div class="container-fluid MoreFavorites bg">
     <div class="row justify-content-start">
-      <button class="btn btn-outline-primary" type="button" @click="backToProfile">Back to Profile</button>
+      <button class="btn" type="button" @click="backToProfile">Back to Profile</button>
     </div>
     <div class="row justify-content-center">
-      <h1>More of your favorite recipes</h1>
+      <h1 class="mb-5 mt-3">More of your favorite recipes</h1>
     </div>
     <div class="row">
       <recipe class="col-3" v-for="recipe in recipes" :recipe="recipe" :key="recipe._id" />
@@ -40,4 +40,14 @@ export default {
 
 
 <style scoped>
+.bg {
+  background-color: #eeeae5;
+  min-height: 100vh;
+}
+.btn {
+  background-color: #4bbcbc;
+}
+h1 {
+  font-family: "Asap", sans-serif;
+}
 </style>

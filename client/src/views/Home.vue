@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid bg">
     <!-- navbar -->
     <navbar />
     <!-- header -->
@@ -30,4 +30,7 @@ export default {
 };
 </script>
 <style scoped>
+.bg {
+  background-color: #eeeae5;
+}
 </style>

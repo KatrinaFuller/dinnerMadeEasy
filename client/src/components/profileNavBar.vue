@@ -1,11 +1,11 @@
 <template>
   <div class="row sticky-top">
     <div class="col-12">
-      <nav class="navbar navbar-light bg-light">
+      <nav class="navbar">
         <form class="form-inline">
-          <button class="btn btn-outline-primary" type="button" @click="backButton">Back</button>
+          <button class="btn" type="button" @click="backButton">Back</button>
           <h3>{{user.name}}'s Dashboard</h3>
-          <button class="btn btn-outline-primary" type="button" @click="logout">Logout</button>
+          <button class="btn" type="button" @click="logout">Logout</button>
         </form>
       </nav>
     </div>
@@ -48,9 +48,14 @@ export default {
 }
 .sticky-top {
   position: sticky;
+  background-color: #dad6d2;
 }
 h3 {
   font-family: "Amaranth", sans-serif;
   font-size: 4vh;
+}
+.btn {
+  background-color: #4bbcbc;
+  color: black;
 }
 </style>
