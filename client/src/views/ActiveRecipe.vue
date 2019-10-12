@@ -47,7 +47,7 @@
           <div class="card-body">
             <h5 class="card-title">Directions:</h5>
             <ul class="card-text">
-              <li v-for="direction in recipe.directions" :key="direction._id">{{direction}}<span class="red-text" @click="deleteDirection(recipe, direction)">x</span></li>
+              <li v-for="direction in recipe.directions" :key="direction._id">{{direction}}<span class="red-text" @click="deleteDirection(direction)">x</span></li>
             </ul>
             <addDirectionsModal/>
               <button
@@ -146,19 +146,10 @@ export default {
       // debugger;
       this.$store.dispatch("deleteNote", data);
     },
-    deleteDirection(data, direction) {
-    let index = 0;
-    let directionIndex = {};
+    deleteDirection(direction) {
     let payload = {
     recipeId: this.$route.params.recipeId,
-    directionIndex: index
-    }
-    for(let i = 0; i<data.directions.length; i++)
-    {
-      if(data.directions[i] == direction){
-      debugger
-        index = i
-      }
+    direction 
     }
     this.$store.dispatch("deleteDirection", payload);
     },
