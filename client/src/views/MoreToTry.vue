@@ -7,7 +7,12 @@
       <h1 class="mb-5 mt-3">More of your recipes to try</h1>
     </div>
     <div class="row">
-      <recipeTry class="col-3" v-for="recipe in recipes" :recipe="recipe" :key="recipe._id" />
+      <recipeTry
+        class="offset-1 offset-md-0 col-10 col-md-3"
+        v-for="recipe in recipes"
+        :recipe="recipe"
+        :key="recipe._id"
+      />
     </div>
   </div>
 </template>

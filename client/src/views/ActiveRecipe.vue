@@ -1,18 +1,18 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid bg">
     <div class="row">
       <div class="activeRecipe justify-content-start">
-        <button class="btn btn-outline-primary" type="button" @click="backToProfile">Back to Profile</button>
+        <button class="btn" type="button" @click="backToProfile">Back to Profile</button>
       </div>
     </div>
     <div class="row" v-if="recipe">
       <div class="col-12">
-        <h1 class="mt-3 mb-3">{{recipe.label}}</h1>
+        <h1 class="mt-3 mb-4">{{recipe.label}}</h1>
       </div>
       <div class="col-12 text-center">
         <img v-bind:src="`${recipe.image}`" />
       </div>
-      <div class="col-12 d-flex justify-content-center my-3">
+      <div class="col-12 d-flex justify-content-center mt-4">
         <star-rating
           :item-size="30"
           inactive-color="#000"
@@ -23,7 +23,7 @@
         ></star-rating>
       </div>
       <div class="col-12">
-        <button class="btn btn-outline-info mx-1 text-white">
+        <button class="btn mx-1 my-4">
           <a v-bind:href="`${recipe.url}`" target="_blank">Go To Recipe</a>
         </button>
         <!-- <button class="btn btn-outline-info" @click="moveToFavorites">Move to Favorite's list</button> -->
@@ -46,15 +46,14 @@
         <div class="card w-100 shadow mt-3">
           <div class="card-body">
             <h5 class="card-title">Directions:</h5>
-            <ul class="card-text">
-              <li v-for="direction in recipe.directions" :key="direction._id">{{direction}}<span class="red-text" @click="deleteDirection(direction)">x</span></li>
-            </ul>
-            <addDirectionsModal/>
-              <button
-              class="btn btn-primary"
-              data-toggle="modal"
-              data-target="#add-directions-modal"
-            >Add</button>
+            <div class="card-text">
+              <p v-for="direction in recipe.directions" :key="direction._id">
+                {{direction}}
+                <span class="red-text" @click="deleteDirection(direction)">x</span>
+              </p>
+            </div>
+            <addDirectionsModal />
+            <button class="btn" data-toggle="modal" data-target="#add-directions-modal">Add</button>
           </div>
         </div>
       </div>
@@ -64,18 +63,14 @@
         <div class="card w-100 shadow mb-5 mt-4">
           <div class="card-body">
             <h5 class="card-title">Notes:</h5>
-            <ul class="card-text">
-              <li v-for="note in recipe.notes" :key="note._id">
+            <div class="card-text">
+              <p v-for="note in recipe.notes" :key="note._id">
                 {{note.notes}}
                 <span class="red-text" @click="deleteNote(note)">x</span>
-              </li>
-            </ul>
+              </p>
+            </div>
             <addNoteModal />
-            <button
-              class="btn btn-primary"
-              data-toggle="modal"
-              data-target="#add-note-modal"
-            >Add Notes</button>
+            <button class="btn" data-toggle="modal" data-target="#add-note-modal">Add Notes</button>
           </div>
         </div>
       </div>
@@ -89,7 +84,7 @@
 import addNoteModal from "../components/addNoteModal";
 import { StarRating } from "vue-rate-it";
 import Swal from "sweetalert2";
-import addDirectionsModal from"../components/addDirectionsModal";
+import addDirectionsModal from "../components/addDirectionsModal";
 
 export default {
   name: "activeRecipe",
@@ -105,7 +100,6 @@ export default {
       recipeType: this.$route.params.recipeType
     };
     this.$store.dispatch("getRecipeById", payload);
-
   },
   computed: {
     recipe() {
@@ -147,11 +141,11 @@ export default {
       this.$store.dispatch("deleteNote", data);
     },
     deleteDirection(direction) {
-    let payload = {
-    recipeId: this.$route.params.recipeId,
-    direction 
-    }
-    this.$store.dispatch("deleteDirection", payload);
+      let payload = {
+        recipeId: this.$route.params.recipeId,
+        direction
+      };
+      this.$store.dispatch("deleteDirection", payload);
     },
 
     setRating(rating) {
@@ -164,7 +158,7 @@ export default {
     }
   },
 
-  components: { addNoteModal, StarRating, addDirectionsModal}
+  components: { addNoteModal, StarRating, addDirectionsModal }
 };
 </script>
 
@@ -179,5 +173,18 @@ ul {
 }
 img {
   min-height: 50vh;
+}
+h1 {
+  font-family: "Asap", sans-serif;
+}
+.bg {
+  background-color: #eeeae5;
+}
+.btn {
+  background-color: #4bbcbc;
+}
+a {
+  color: black;
+  text-decoration: underline;
 }
 </style>

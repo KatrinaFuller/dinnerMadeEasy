@@ -1,6 +1,6 @@
 <template>
   <div class="pt-5">
-    <div>
+    <div class="col-12 offset-md-3 col-md-6">
       <h6>Main Ingredient</h6>
       <select class="dropdown" v-model="mainIngredient">
         <option></option>
@@ -13,7 +13,7 @@
         <option>fish</option>
       </select>
     </div>
-    <div class="pt-4">
+    <div class="col-12 offset-md-3 col-md-6 pt-4">
       <h6>Dietary Requirement</h6>
       <select class="dropdown" v-model="dietaryRequirement">
         <option></option>
@@ -28,7 +28,7 @@
     <div class="randomRecipeButton pt-4">
       <button type="button" class="btn btn-lg" @click="generate">Generate Recipe</button>
       <div class="row justify-content-center pt-4">
-        <div class="card shadow" style="width: 30rem;" v-if="recipe">
+        <div class="card shadow mb-4" style="width: 30rem;" v-if="recipe">
           <h1>{{recipe.label}}</h1>
           <img alt="Card image cap" v-bind:src="`${recipe.image}`" />
           <div class="card-body">
@@ -106,7 +106,7 @@ export default {
 
 <style scoped>
 .dropdown {
-  width: 20vw;
+  width: 100%;
 }
 .btn {
   background-color: #4bbcbc;
