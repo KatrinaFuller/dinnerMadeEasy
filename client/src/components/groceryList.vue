@@ -1,8 +1,8 @@
 <template>
-  <div class="groceryList border">
+  <div class="groceryList">
     <h3 class="mt-2">Grocery List:</h3>
     <div class="groceryList row justify-content-center">
-      <div class="col-3 border mt-2 text-left">
+      <div class="col-3 border white shadow mt-2 text-left">
         <ul>
           <li v-for="grocery in groceries" :key="grocery._id">
             <input
@@ -23,12 +23,12 @@
       <div class="input-group mb-3 col-4 mt-3">
         <input
           type="text"
-          class="form-control"
+          class="form-control shadow"
           placeholder="Add an item to grocery list"
           v-model="newItem.description"
         />
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" @click="addIngredient()">Add</button>
+        <div class="input-group-append shadow">
+          <button class="btn" type="button" @click="addIngredient()">Add</button>
         </div>
       </div>
     </div>
@@ -83,5 +83,12 @@ ul {
 }
 h3 {
   font-family: "Asap", sans-serif;
+}
+.btn {
+  background-color: #4bbcbc;
+  color: black;
+}
+.white {
+  background-color: white;
 }
 </style>

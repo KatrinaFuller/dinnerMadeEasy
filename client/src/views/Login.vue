@@ -1,21 +1,22 @@
 <template>
-  <div class="login pt-4">
+  <div class="login pt-4 bg">
     <h1 class="title">Dinner Made Easy</h1>
     <form v-if="loginForm" @submit.prevent="loginUser">
-      <input type="email" v-model="creds.email" placeholder="email" />
-      <input type="password" v-model="creds.password" placeholder="password" />
-      <button class="btn btn-primary m-2" type="submit">Login</button>
+      <input class="shadow" type="email" v-model="creds.email" placeholder="email" />
+      <input class="shadow" type="password" v-model="creds.password" placeholder="password" />
+      <button class="btn m-2" type="submit">Login</button>
     </form>
     <form v-else @submit.prevent="register">
-      <input type="text" v-model="newUser.name" placeholder="name" />
-      <input type="email" v-model="newUser.email" placeholder="email" />
-      <input type="password" v-model="newUser.password" placeholder="password" />
-      <button class="btn btn-primary m-2" type="submit">Create Account</button>
+      <input class="shadow" type="text" v-model="newUser.name" placeholder="name" />
+      <input class="shadow" type="email" v-model="newUser.email" placeholder="email" />
+      <input class="shadow" type="password" v-model="newUser.password" placeholder="password" />
+      <button class="btn m-2 shadow" type="submit">Create Account</button>
     </form>
     <div class="action text" @click="loginForm = !loginForm">
       <p v-if="loginForm">No account? Click here to Register</p>
       <p v-else>Already have an account? Click here to Login</p>
     </div>
+    <img src="../assets/dmelogo.png" alt />
   </div>
 </template>
 
@@ -53,5 +54,16 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.bg {
+  background-color: #eeeae5;
+  min-height: 100vh;
+}
+.btn {
+  background-color: #4bbcbc;
+}
+h1 {
+  font-family: "Amaranth", sans-serif;
+  font-size: 7vh;
+}
 </style>

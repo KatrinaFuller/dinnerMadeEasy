@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid bg">
     <div class="profile">
       <profileNavBar />
       <div class="row">
@@ -26,20 +26,12 @@
           </h3>
 
           <favList />
-          <button
-            class="btn btn-outline-primary mb-5 mt-3"
-            type="button"
-            @click="MoreFavRecipes"
-          >More Favorite Recipes</button>
+          <button class="btn mb-5 mt-3" type="button" @click="MoreFavRecipes">More Favorite Recipes</button>
         </div>
         <div class="col-4 offset-2 mt-4">
           <h3 class="mb-4">More Recipes to Try</h3>
           <toTryList />
-          <button
-            class="btn btn-outline-primary mb-5 mt-3"
-            type="button"
-            @click="MoreToTry"
-          >More Recipes To Try</button>
+          <button class="btn mb-5 mt-3" type="button" @click="MoreToTry">More Recipes To Try</button>
         </div>
       </div>
     </div>
@@ -88,5 +80,11 @@ export default {
 }
 h3 {
   font-family: "Asap", sans-serif;
+}
+.bg {
+  background-color: #eeeae5;
+}
+.btn {
+  background-color: #4bbcbc;
 }
 </style>
