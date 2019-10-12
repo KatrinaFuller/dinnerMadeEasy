@@ -20,4 +20,8 @@ export default {
 
 
 <style scoped>
+h1 {
+  font-family: "Amaranth", sans-serif;
+  font-size: 7vh;
+}
 </style>

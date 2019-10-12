@@ -49,4 +49,8 @@ export default {
 .sticky-top {
   position: sticky;
 }
+h3 {
+  font-family: "Amaranth", sans-serif;
+  font-size: 4vh;
+}
 </style>

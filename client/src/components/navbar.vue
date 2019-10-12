@@ -1,15 +1,15 @@
 <template>
-  <div class="row sticky-top">
-    <div class="col-12">
-      <nav class="navbar navbar-light bg-light">
-        <form class="form-inline">
-          <button
-            class="btn btn-outline-primary"
-            type="button"
-            @click="logoutNav"
-            v-if="user.email"
-          >Logout</button>
-          <!-- <div class="dropdown">
+  <div class="sticky-top">
+    <!-- <div class="col-12"> -->
+    <nav class="navbar navbar-light bg-light">
+      <form class="form-inline">
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          @click="logoutNav"
+          v-if="user.email"
+        >Logout</button>
+        <!-- <div class="dropdown">
           <button
             class="btn btn-secondary dropdown-toggle"
             type="button"
@@ -23,18 +23,18 @@
             <a class="dropdown-item" href="#">Another action</a>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
-          </div>-->
+        </div>-->
 
-          <button class="btn btn-outline-primary" type="button" @click="loginNav" v-else>Login</button>
-          <button
-            class="btn btn-outline-primary"
-            type="button"
-            @click="usernameButton"
-            v-if="user.email"
-          >Hello, {{user.name}}</button>
-        </form>
-      </nav>
-    </div>
+        <button class="btn btn-outline-primary" type="button" @click="loginNav" v-else>Login</button>
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          @click="usernameButton"
+          v-if="user.email"
+        >Hello, {{user.name}}</button>
+      </form>
+    </nav>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -70,6 +70,7 @@ export default {
 <style scoped>
 .navbar1 {
   display: contents;
+  padding: 0.9rem 1rem;
 }
 .form-inline {
   display: contents;
