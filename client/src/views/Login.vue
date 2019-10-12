@@ -1,6 +1,6 @@
 <template>
   <div class="login pt-4 bg">
-    <h1 class="title">Dinner Made Easy</h1>
+    <h1 class="title mb-4">Dinner Made Easy</h1>
     <form v-if="loginForm" @submit.prevent="loginUser">
       <input class="shadow" type="email" v-model="creds.email" placeholder="email" />
       <input class="shadow" type="password" v-model="creds.password" placeholder="password" />
@@ -16,7 +16,9 @@
       <p v-if="loginForm">No account? Click here to Register</p>
       <p v-else>Already have an account? Click here to Login</p>
     </div>
-    <img src="../assets/dmelogo.png" alt />
+    <div class="col-sm-12">
+      <img src="../assets/dmelogo.png" alt />
+    </div>
   </div>
 </template>
 
@@ -58,6 +60,7 @@ export default {
 .bg {
   background-color: #eeeae5;
   min-height: 100vh;
+  min-width: 100vw;
 }
 .btn {
   background-color: #4bbcbc;
@@ -65,5 +68,9 @@ export default {
 h1 {
   font-family: "Amaranth", sans-serif;
   font-size: 7vh;
+}
+img {
+  height: 300px;
+  width: 300px;
 }
 </style>

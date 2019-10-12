@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="input-group mb-3 col-4 mt-3">
+      <div class="input-group mb-3 col-sm-12 col-md-4 mt-3">
         <input
           type="text"
           class="form-control shadow"
