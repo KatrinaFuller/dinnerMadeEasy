@@ -9,11 +9,9 @@
           <div class="card-body">
             <h5 class="card-title inline" @click="viewRecipe()">{{recipe.label}}</h5>
             <span class="bg-light text-danger rounded px-1 ml-1 pb-1" @click="removeRecipe">x</span>
-            <button
-              class="btn btn-outline-primary btn-sm"
-              type="button"
-              @click="moveToFav()"
-            >Move to Favorites</button>
+            <div class="row justify-content-center mt-2">
+              <button class="btn btn-sm" type="button" @click="moveToFav()">Move to Favorites</button>
+            </div>
           </div>
         </div>
       </div>
@@ -73,5 +71,8 @@ export default {
   box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
     -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
   cursor: pointer;
+}
+.btn {
+  background-color: #4bbcbc;
 }
 </style>

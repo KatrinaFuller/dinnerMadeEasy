@@ -46,12 +46,12 @@
         <div class="card w-100 shadow mt-3">
           <div class="card-body">
             <h5 class="card-title">Directions:</h5>
-            <ul class="card-text">
-              <li v-for="direction in recipe.directions" :key="direction._id">
+            <div class="card-text">
+              <p v-for="direction in recipe.directions" :key="direction._id">
                 {{direction}}
                 <span class="red-text" @click="deleteDirection(direction)">x</span>
-              </li>
-            </ul>
+              </p>
+            </div>
             <addDirectionsModal />
             <button class="btn" data-toggle="modal" data-target="#add-directions-modal">Add</button>
           </div>
@@ -63,12 +63,12 @@
         <div class="card w-100 shadow mb-5 mt-4">
           <div class="card-body">
             <h5 class="card-title">Notes:</h5>
-            <ul class="card-text">
-              <li v-for="note in recipe.notes" :key="note._id">
+            <div class="card-text">
+              <p v-for="note in recipe.notes" :key="note._id">
                 {{note.notes}}
                 <span class="red-text" @click="deleteNote(note)">x</span>
-              </li>
-            </ul>
+              </p>
+            </div>
             <addNoteModal />
             <button class="btn" data-toggle="modal" data-target="#add-note-modal">Add Notes</button>
           </div>

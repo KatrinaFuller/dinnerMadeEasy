@@ -3,8 +3,10 @@
     <h1 class="title mb-4">Dinner Made Easy</h1>
     <form v-if="loginForm" @submit.prevent="loginUser">
       <input class="shadow" type="email" v-model="creds.email" placeholder="email" />
-      <input class="shadow" type="password" v-model="creds.password" placeholder="password" />
-      <button class="btn m-2" type="submit">Login</button>
+      <input class="shadow mt-2" type="password" v-model="creds.password" placeholder="password" />
+      <div class="col-12">
+        <button class="btn m-2" type="submit">Login</button>
+      </div>
     </form>
     <form v-else @submit.prevent="register">
       <input class="shadow" type="text" v-model="newUser.name" placeholder="name" />
@@ -16,8 +18,8 @@
       <p v-if="loginForm">No account? Click here to Register</p>
       <p v-else>Already have an account? Click here to Login</p>
     </div>
-    <div class="col-sm-12">
-      <img src="../assets/dmelogo.png" alt />
+    <div class="col-12">
+      <img class="img-fluid" src="../assets/dmelogo.png" alt />
     </div>
   </div>
 </template>
@@ -70,7 +72,6 @@ h1 {
   font-size: 7vh;
 }
 img {
-  height: 300px;
-  width: 300px;
+  max-height: 54vh;
 }
 </style>

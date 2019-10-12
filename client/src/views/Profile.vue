@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="offset-1 col-4 mt-4">
+        <div class="offset-1 col-10 col-md-4 mt-4">
           <addRecipeModal />
           <h3 class="mb-4">
             Your Favorite Recipes
@@ -28,7 +28,7 @@
           <favList />
           <button class="btn mb-5 mt-3" type="button" @click="MoreFavRecipes">More Favorite Recipes</button>
         </div>
-        <div class="col-4 offset-2 mt-4">
+        <div class="col-10 col-md-4 offset-md-2 offset-1 mt-4">
           <h3 class="mb-4">More Recipes to Try</h3>
           <toTryList />
           <button class="btn mb-5 mt-3" type="button" @click="MoreToTry">More Recipes To Try</button>

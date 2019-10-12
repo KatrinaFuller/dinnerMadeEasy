@@ -1,6 +1,6 @@
 <template>
   <div class="pt-5">
-    <div class="col-sm-12 col-md-12">
+    <div class="col-12 offset-md-3 col-md-6">
       <h6>Main Ingredient</h6>
       <select class="dropdown" v-model="mainIngredient">
         <option></option>
@@ -13,7 +13,7 @@
         <option>fish</option>
       </select>
     </div>
-    <div class="col-sm-12 col-md-12 pt-4">
+    <div class="col-12 offset-md-3 col-md-6 pt-4">
       <h6>Dietary Requirement</h6>
       <select class="dropdown" v-model="dietaryRequirement">
         <option></option>
@@ -106,7 +106,7 @@ export default {
 
 <style scoped>
 .dropdown {
-  width: 20vw;
+  width: 100%;
 }
 .btn {
   background-color: #4bbcbc;
