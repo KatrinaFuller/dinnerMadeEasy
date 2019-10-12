@@ -25,6 +25,8 @@ export default class RecipeController {
             .post('/favRecipes', this.createFavRecipes)
             .post('/toTryRecipes', this.createToTryRecipes)
             .post('/:id/notes', this.createNotes)
+            .post('/:id/directions', this.createDirections)
+            .delete('/:id/directions', this.deleteDirections)
             .put('/:id', this.edit)
             .put('/:id/notes', this.deleteNotes)
             .delete('/:id', this.delete)
@@ -108,6 +110,27 @@ export default class RecipeController {
         try {
             let notes = await _recipeService.findOneAndUpdate({ _id: req.params.id, userId: req.session.uid }, { $push: { notes: req.body } }, { new: true })
             res.send(notes)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async createDirections(req, res, next) {
+        req.body.userId = req.session.uid
+        try {
+            let directions = await _recipeService.findOneAndUpdate({ _id: req.params.id, userId: req.session.uid }, { $push: { directions: req.body.directions } }, { new: true })
+            res.send(directions)
+        } catch (error) {
+            next(error)
+        }
+    }
+    async deleteDirections(req, res, next) {
+        try {
+            let direction = await _recipeService.findOneAndRemove({ _id: req.body.recipeId, userId: req.session.uid }, { $pull: { directions: req.body.directions } }, { new: true })
+            // if (note) {
+            res.send(direction)
+            // }
+            // throw new Error("Invalid Id")
         } catch (error) {
             next(error)
         }

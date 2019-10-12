@@ -24,7 +24,7 @@ const _model = new Schema({
     ratings: { type: Number },
     userId: { type: ObjectId, ref: "User", required: true },
     notes: [_notesSchema],
-    directions: { type: String }
+    directions: [{ type: String }]
 })
 
 export default class RecipeService {

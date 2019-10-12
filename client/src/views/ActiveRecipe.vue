@@ -46,7 +46,15 @@
         <div class="card w-100 shadow mt-3">
           <div class="card-body">
             <h5 class="card-title">Directions:</h5>
-            <p class="card-text">{{recipe.directions}}</p>
+            <ul class="card-text">
+              <li v-for="direction in recipe.directions" :key="direction._id">{{direction}}<span class="red-text" @click="deleteDirection(recipe, direction)">x</span></li>
+            </ul>
+            <addDirectionsModal/>
+              <button
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#add-directions-modal"
+            >Add</button>
           </div>
         </div>
       </div>
@@ -81,6 +89,7 @@
 import addNoteModal from "../components/addNoteModal";
 import { StarRating } from "vue-rate-it";
 import Swal from "sweetalert2";
+import addDirectionsModal from"../components/addDirectionsModal";
 
 export default {
   name: "activeRecipe",
@@ -97,7 +106,6 @@ export default {
     };
     this.$store.dispatch("getRecipeById", payload);
 
-    //pull from URL here
   },
   computed: {
     recipe() {
@@ -138,6 +146,22 @@ export default {
       // debugger;
       this.$store.dispatch("deleteNote", data);
     },
+    deleteDirection(data, direction) {
+    let index = 0;
+    let directionIndex = {};
+    let payload = {
+    recipeId: this.$route.params.recipeId,
+    directionIndex: index
+    }
+    for(let i = 0; i<data.directions.length; i++)
+    {
+      if(data.directions[i] == direction){
+      debugger
+        index = i
+      }
+    }
+    this.$store.dispatch("deleteDirection", payload);
+    },
 
     setRating(rating) {
       let payload = {
@@ -149,7 +173,7 @@ export default {
     }
   },
 
-  components: { addNoteModal, StarRating }
+  components: { addNoteModal, StarRating, addDirectionsModal}
 };
 </script>
 

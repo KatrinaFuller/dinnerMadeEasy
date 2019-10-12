@@ -55,6 +55,30 @@ export default new Vuex.Store({
     setFavRecipes(state, favoriteRecipes) {
       state.favoriteRecipes = favoriteRecipes
     },
+    addFavRecipe(state, recipe) {
+      state.favoriteRecipes.unshift(recipe)
+    },
+    addToTryRecipe(state, recipe) {
+      state.toTryRecipes.unshift(recipe)
+    },
+
+    removeTry(state, recipe) {
+      let arr = state.toTryRecipes
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i]._id == recipe._id) {
+          state.toTryRecipes.splice(i, 1);
+        }
+      }
+    },
+
+    removeFav(state, recipe) {
+      let arr = state.favoriteRecipes
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i]._id == recipe._id) {
+          state.favoriteRecipes.splice(i, 1);
+        }
+      }
+    },
 
     setIngredients(state, groceries) {
       state.groceries = groceries
@@ -129,6 +153,15 @@ export default new Vuex.Store({
         console.warn(e.message)
       }
     },
+    async addToFavorites({ commit, dispatch }, data) {
+      try {
+        let res = await api.get(`/recipe?type=favorites`)
+        commit('setFavRecipes', res.data)
+      } catch (error) {
+        console.error(error)
+
+      }
+    },
 
     async addNote({ dispatch }, data) {
       try {
@@ -139,7 +172,26 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-
+    async addDirections({ dispatch }, data) {
+      try {
+        debugger
+        let res = await api.post(`/recipe/${data.recipeId}/directions`, data)
+        data._id = data.recipeId
+        dispatch("getRecipeById", data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async deleteDirection({ dispatch }, data) {
+      try {
+        debugger
+        let res = await api.delete(`/recipe/${data.recipeId}/directions`, data.directions)
+        data._id = data.recipeId
+        dispatch('getRecipeById', data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async deleteNote({ dispatch }, data) {
       try {
         let res = await api.put(`/recipe/${data.recipeId}/notes`, data)
@@ -150,19 +202,10 @@ export default new Vuex.Store({
       }
     },
 
-    async addToFavorites({ commit, dispatch }, data) {
-      try {
-        let res = await api.get(`/recipe?type=favorites`)
-        commit('setFavRecipes', res.data)
-      } catch (error) {
-        console.error(error)
-
-      }
-    },
     async addToTry({ dispatch }, data) {
       try {
         let res = await api.post('/recipe/toTryRecipes', data)
-        console.log("got")
+        // console.log("got")
         dispatch('addToTryList')
         const Toast = Swal.mixin({
           toast: true,
@@ -231,7 +274,7 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async removeRecipe({ dispatch }, data) {
+    async removeRecipe({ dispatch, commit }, data) {
       try {
         let res = await api.delete('/recipe/' + data._id)
         dispatch('addToFavorites')
@@ -297,6 +340,22 @@ export default new Vuex.Store({
 
     //   }
     // }
+    async moveRecipe({ commit, dispatch }, recipe) {
+      try {
+        if (recipe.type == "favorites") {
+          let res = await api.put(`recipe/${recipe._id}`, recipe);
+          commit("addFavRecipe", recipe)
+          commit("removeTry", recipe)
+          // dispatch('addToFavorites')
+        } else {
+          // commit("removeFav", recipe)
+          let res = await api.put(`recipe/${recipe._id}`, recipe);
+          commit("addToTryRecipe", recipe)
+          commit("removeFav", recipe)
+        }
+      } catch (error) { console.error(error) }
+    }
+
   }
 })
 
