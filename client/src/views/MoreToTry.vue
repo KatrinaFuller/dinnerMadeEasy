@@ -7,8 +7,7 @@
       <h1 class="mb-5 mt-3">More of your recipes to try</h1>
     </div>
     <div class="row">
-      <recipe class="col-3" v-for="recipe in recipes" :recipe="recipe" :key="recipe._id" />
-      <button class="btn btn-outline-primary" type="button" @click="backToProfile">Back to Profile</button>
+      <recipeTry class="col-3" v-for="recipe in recipes" :recipe="recipe" :key="recipe._id" />
     </div>
   </div>
 </template>
@@ -16,9 +15,10 @@
 
 <script>
 import router from "@/router.js";
-import recipe from "../components/recipe";
+import recipeTry from "../components/recipeTry";
 export default {
   name: "MoreToTry",
+
   data() {
     return {};
   },
@@ -35,7 +35,7 @@ export default {
       this.$store.dispatch("backToProfile");
     }
   },
-  components: { recipe }
+  components: { recipeTry }
 };
 </script>
 
