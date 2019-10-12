@@ -1,7 +1,7 @@
 <template>
-  <div class="profile">
-    <profileNavBar />
-    <div class="container-fluid">
+  <div class="container-fluid">
+    <div class="profile">
+      <profileNavBar />
       <div class="row">
         <div class="col">
           <groceryList />
