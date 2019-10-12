@@ -11,14 +11,15 @@
         <div class="modal-body">
           <form @submit.prevent="addDirections()">
             <div class="form-group">
-              <input
+              <textarea
                 type="text"
                 class="form-control"
+                rows="3"
                 id="note"
-                placeholder="Enter Note"
+                placeholder="Directions Here"
                 v-model="newDirections.directions"
                 required
-              />
+              /></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
