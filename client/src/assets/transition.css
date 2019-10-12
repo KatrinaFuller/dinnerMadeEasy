@@ -1,0 +1,12 @@
+.fade-enter {
+  transition: all 0.5s ease-out;
+  opacity: 0;
+}
+​ .fade-enter-to {
+  transition-delay: 0.5s;
+}
+​ .fade-leave-to {
+  transition: all 0.5s ease-in;
+  transform: rotate(200deg) scale(2);
+  opacity: 0;
+}
