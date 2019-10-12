@@ -26,8 +26,8 @@ export default class RecipeController {
             .post('/toTryRecipes', this.createToTryRecipes)
             .post('/:id/notes', this.createNotes)
             .post('/:id/directions', this.createDirections)
-            .delete('/:id/directions', this.deleteDirections)
             .put('/:id', this.edit)
+            .put('/:id/directions', this.deleteDirections)
             .put('/:id/notes', this.deleteNotes)
             .delete('/:id', this.delete)
     }
@@ -126,7 +126,7 @@ export default class RecipeController {
     }
     async deleteDirections(req, res, next) {
         try {
-            let direction = await _recipeService.findOneAndRemove({ _id: req.body.recipeId, userId: req.session.uid }, { $pull: { directions: req.body.directions } }, { new: true })
+            let direction = await _recipeService.findOneAndUpdate({ _id: req.body.recipeId, userId: req.session.uid }, { $pull: { directions: req.body.direction } }, { new: true })
             // if (note) {
             res.send(direction)
             // }
