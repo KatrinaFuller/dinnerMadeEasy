@@ -128,7 +128,6 @@ export default {
       });
     },
     // moveToFavorites() {
-    //   debugger;
 
     //   // this.$store.dispatch("addToFavorites", this.recipe);
     //   this.$store.dispatch("moveToFavorites", this.recipe);
@@ -136,8 +135,6 @@ export default {
 
     deleteNote(data) {
       // data._id = this.$route.params.recipeId;
-      data.recipeId = this.$route.params.recipeId;
-      // debugger;
       this.$store.dispatch("deleteNote", data);
     },
     deleteDirection(direction) {
@@ -153,7 +150,6 @@ export default {
         _id: this.$route.params.recipeId,
         ratings: rating
       };
-      // debugger;
       this.$store.dispatch("setRating", payload);
     }
   },

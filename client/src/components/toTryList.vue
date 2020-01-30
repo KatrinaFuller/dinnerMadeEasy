@@ -51,7 +51,6 @@ export default {
       window.MOVING = r;
       // this.$store.dispatch("moveRecipe", newFavorite);
       // window.localStorage.setItem("MOVING", json.stringify(r));
-      // debugger;
       // event.dataTransfer.setData("text/plain", JSON.stringify(r));
     },
 

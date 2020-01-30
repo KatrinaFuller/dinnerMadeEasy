@@ -45,7 +45,6 @@ export default {
         recipeId: this.$route.params.recipeId,
         directions: this.newDirections.directions
       };
-      debugger;
       this.$store.dispatch("addDirections", payload);
       $(".close").click();
       // this.newNote = {};

@@ -44,7 +44,6 @@ export default {
         recipeId: this.$route.params.recipeId,
         notes: this.newNote.notes
       };
-      debugger;
       this.$store.dispatch("addNote", payload);
       $(".close").click();
       // this.newNote = {};

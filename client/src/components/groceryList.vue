@@ -55,7 +55,6 @@ export default {
   },
   methods: {
     addIngredient() {
-      // debugger;
       this.$store.dispatch("addIngredient", this.newItem);
       this.newItem = {};
       // event.target.reset();
