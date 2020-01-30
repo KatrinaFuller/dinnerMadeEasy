@@ -174,7 +174,6 @@ export default new Vuex.Store({
     },
     async addDirections({ dispatch }, data) {
       try {
-        debugger
         let res = await api.post(`/recipe/${data.recipeId}/directions`, data)
         data._id = data.recipeId
         dispatch("getRecipeById", data)
@@ -240,10 +239,9 @@ export default new Vuex.Store({
     },
 
     async generate({ commit, dispatch }, data) {
-
       let recipes = JSON.parse(localStorage.getItem("recipes")) //checking for recipes in local storage
       try {
-        if (!recipes || data.random) {
+        if (!recipes || recipes.length === 0 || data.random) {
           let url = '/recipe/random'
           url += data.query ? `?q=${data.query}` : ""
           if (!data.query) {

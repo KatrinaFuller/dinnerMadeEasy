@@ -9,7 +9,7 @@ const _foodapi = Axios.create({
     baseURL: 'https://api.edamam.com/'
 })
 
-let apiKey = 'search?app_id=$e5152851app_key=$b5e235b115bbed4de5e65e86ac731f4a'
+let apiKey = 'search?app_id=e5152851&app_key=b5e235b115bbed4de5e65e86ac731f4a'
 
 export default class RecipeController {
     constructor() {
@@ -64,10 +64,10 @@ export default class RecipeController {
         try {
             let options = randomizeQueryAndGetMaxCount(req.query.q)
             let url = apiKey
-            if (req.query.diet != undefined) {
-                options.maxTo = 200
-            }
-            url += '&q=' + options.query + '&to=' + options.maxTo + '&from=' + (options.maxTo - 100)
+            // if (req.query.diet != undefined) {
+            //     options.maxTo = 200
+            // }
+            url += '&q=' + options.foodChoice + '&to=' + options.maxTo + '&from=' + (options.maxTo - 100)
             url += req.query.diet != undefined ? "&diet=" + req.query.diet : ""
             let data = await _foodapi.get(url)
             res.send(data.data.hits)
@@ -173,18 +173,31 @@ export default class RecipeController {
 
 
 let options = {
-    beef: 69809,
-    chicken: 170158,
-    //add count to other queries
+    beef: 100,
+    chicken: 100,
+    pork: 100,
+    ham: 100,
+    turkey: 100,
+    fish: 100
 }
 
-function randomizeQueryAndGetMaxCount(query) {
-    if (!query || query == "random") {
+/**
+ * 
+ * @param {string} foodChoice The query should be a food choice or set to random
+ */
+function randomizeQueryAndGetMaxCount(foodChoice) {
+
+    // if the query is not set we need to set it to
+    // one of our options
+    if (!foodChoice || foodChoice == "random") {
         let keys = Object.keys(options)
-        query = keys[Math.floor(Math.random() * keys.length)]
+        foodChoice = keys[Math.floor(Math.random() * keys.length)]
     }
-    let maxTo = Math.floor(Math.random() * (options[query]))
-    //NOTE while api not working
-    maxTo = Math.floor(Math.random() * 5900)
-    return { query, maxTo: maxTo > 100 ? maxTo : 100 }
+
+    // const foodChoice = options[foodOption]
+
+    // let maxTo = Math.floor(Math.random() * foodChoice)
+    // TODO this should not be hard coded (remove magic numbers)
+    const maxTo = 100 //Math.floor(Math.random() * 5900)
+    return { foodChoice, maxTo: maxTo > 100 ? maxTo : 100 }
 }

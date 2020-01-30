@@ -21,7 +21,6 @@
         <option>low-fat</option>
         <option>low-sodium</option>
         <option>high-protein</option>
-        <option>high-fiber</option>
         <option>balanced</option>
       </select>
     </div>
